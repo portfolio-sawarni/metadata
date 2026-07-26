@@ -1,0 +1,41 @@
+[
+    {
+        "title": "Resume Scorer",
+        "pictures": [],
+        "videos": [],
+        "demo": "",
+        "link": "https://github.com/sawarni99/resume-scorer",
+        "description": "Resume Scorer is an AI-driven tool that evaluates how well a candidate's resume aligns with a given job description, tailored specifically for IT and Computer Science roles. It produces a weighted match score out of 100 by combining structured data extraction with semantic similarity scoring.<new_line>### How It Works<new_line>The system follows a five-stage pipeline:<new_line>1. **Resume Text Extraction** — Since resumes are computer-generated documents, text is extracted directly from the PDF using PyMuPDF rather than relying on OCR, ensuring higher accuracy and speed.<new_line>2. **Resume-to-JSON Conversion** — A fine-tuned language model parses the raw resume text into a structured format covering contact info, description, education, skills, work experience, projects, and certifications.<new_line>3. **Job Description-to-JSON Conversion** — A second fine-tuned model parses the job description into a structured format covering role summary, required and general skills, soft skills, experience range, education requirements, and certifications.<new_line>4. **Weight Assignment** — Each section of the job description is assigned a predefined weight based on its importance to the overall match.<new_line>5. **Semantic Matching and Scoring** — Job description sections are matched against corresponding resume sections using cosine similarity over vector embeddings, producing a final weighted score.<new_line>### Custom Fine-Tuned Models<new_line>To power structured extraction, I fine-tuned two separate language models based on Llama 3.2 3B Instruct, one specialized for parsing resumes and another for parsing job descriptions. The process included:<new_line>- Generating a training dataset of 600 synthetic resumes and 500 job descriptions, covering diverse formats and Computer Science roles.<new_line>- Publishing both extraction datasets openly on Hugging Face for reproducibility.<new_line>- Quantizing the base model and applying LoRA adapters (rank 16) on the self-attention layers for efficient fine-tuning.<new_line>- Exporting the fine-tuned models to GGUF format for local inference through Ollama, avoiding dependency on external APIs.<new_line>- Evaluating model performance using ROUGE score, exact match, and valid-JSON generation rate.<new_line>### Scoring Methodology<new_line>The overall score is broken down across multiple weighted components, including summary match, role match, skills match (required, general, and soft skills), years of experience, education relevance, and certification relevance. Each sub-score uses cosine similarity between embedded resume and job description sections, generated with the Qwen3 embedding model. Missing or unmatched job requirements are penalized proportionally, while sections not required by the job description default to full credit.<new_line>### API and Architecture<new_line>The project exposes its functionality through a FastAPI service with endpoints to extract structured data from a resume, extract structured data from a job description, and compute the final match score. The embedding model is loaded once at API startup for efficiency, and the extraction endpoints automatically pull and run the fine-tuned models locally through Ollama, with automatic retries on invalid outputs.<new_line>### Key Highlights<new_line>- End-to-end pipeline combining PDF parsing, LLM-based structured extraction, and embedding-based semantic scoring.<new_line>- Two custom fine-tuned LLMs trained from scratch on self-generated, published datasets.<new_line>- Fully local inference pipeline using quantized, LoRA-adapted models served via Ollama — no reliance on paid third-party APIs at runtime.<new_line>- Configurable scoring weights and thresholds, allowing the matching logic to be tuned without retraining.<new_line>- Clean, modular architecture separating data extraction, scoring logic, and API layers.<new_line>This project reflects hands-on experience across the full applied AI lifecycle — synthetic dataset creation, LLM fine-tuning, embedding-based similarity search, and productionizing the pipeline behind a REST API.",
+        "short_description": "Resume Scorer is an AI-powered tool that evaluates how well a resume matches a job description for Computer Science related tech roles. It extracts structured data from using fine-tuned LLMs, then computes a weighted 0-100 match score via semantic similarity across skills, experience, education, and certifications.",
+        "skills": [
+            "python",
+            "sft",
+            "quantization",
+            "hf",
+            "vector_embedding",
+            "pydantic",
+            "streamlit"
+        ],
+        "domains": [
+            "ai_engineering",
+            "be_development"
+        ]
+    },
+    {
+        "title": "Jharkhand Scientifics",
+        "pictures": [],
+        "videos": [],
+        "demo": "",
+        "link": "https://github.com/sawarni99/jharkhand-scientifics",
+        "description": "Jharkhand Scientifics is a responsive, user-friendly marketing website I built as a freelance project for Jharkhand Scientifics, a supplier of scientific equipment. The goal was to give the business a professional online presence to showcase its products, highlight its customer base, and make it easy for visitors to get in touch. The site was built using React JS, HTML, and CSS, with a strong focus on responsiveness across desktop and mobile devices.<new_line>### Landing Page<new_line>The landing page offers a clean, professional entry point into the site, with navigation to the Products, Customers, and Contact sections. A footer with essential contact details, including email and phone number, ensures visitors can reach out easily from anywhere on the site. The layout was designed to work seamlessly on both desktop and mobile screens.<new_line>### Product Page<new_line>The Product Page lets users browse scientific equipment across multiple categories such as Mathematics, Physics, Chemistry, and more. Visitors can filter products by category and adjust size options to find exactly what they need. Each product listing includes detailed descriptions and pricing, making the browsing experience straightforward for potential buyers.<new_line>### Customers Page<new_line>The Customers Page showcases the business's client base, listing details such as the school or organization name, location, and the number of years each customer has been purchasing from them. This section was designed to build trust with new visitors by highlighting long-standing relationships with schools and institutions.<new_line>### Contact Page<new_line>The Contact Page consolidates all the ways to reach the business, including address, email, and phone number. It also includes an embedded Google Maps iframe showing the exact shop location, making it simple for visitors to find the store in person.<new_line>### Key Highlights<new_line>- Built end-to-end as a freelance engagement, from requirements gathering to final deployment.<new_line>- Fully responsive design, tested and optimized for both desktop and mobile views.<new_line>- Category- and size-based product filtering for easier navigation of a large equipment catalog.<new_line>- Dedicated customer showcase to build credibility and trust with prospective buyers.<new_line>- Integrated Google Maps for real-world store location and easy navigation.<new_line>This project reflects my experience delivering a complete, production-ready front-end solution independently for a real client — covering UI/UX design, component architecture, and responsive development using React.",
+        "short_description": "Jharkhand Scientifics is a responsive marketing website built for a freelance client selling scientific equipment. Developed with React JS, HTML, and CSS, it features product browsing by category, a customer showcase, and a contact page with embedded Google Maps — delivering a smooth, mobile-friendly experience end to end.",
+        "skills": [
+            "react_js",
+            "css",
+            "js"
+        ],
+        "domains": [
+            "fe_development"
+        ]
+    }
+]

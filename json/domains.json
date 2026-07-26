@@ -1,0 +1,6 @@
+[
+    {"unique_id": "ai_engineering", "name": "AI Engineering", "displayable": false},
+    {"unique_id": "fe_development", "name": "Frontend Development", "displayable": false},
+    {"unique_id": "be_development", "name": "Backend Development", "displayable": false},
+    {"unique_id": "cyber_security", "name": "Cyber Security", "displayable": false}
+]

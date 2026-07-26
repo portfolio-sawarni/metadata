@@ -1,0 +1,30 @@
+
+social_media:
+[
+    {"name": "", "link": ""},
+]
+
+domains:
+[
+    {"unique_id": "", "name": "", "displayable": false},
+]
+
+skills:
+[
+    {"unique_id": "", "name": "", "type": "", "displayable": false}
+]
+
+projects:
+[
+    {
+        "title": "",
+        "pictures": [],
+        "videos": [],
+        "demo": "",
+        "link": "",
+        "description": "",
+        "short_description": "",
+        "skills": [],
+        "domains": []
+    }
+]
