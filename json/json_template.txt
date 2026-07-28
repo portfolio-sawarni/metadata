@@ -28,3 +28,27 @@ projects:
         "domains": []
     }
 ]
+
+experience:
+[
+    {
+        "companyName": "",
+        "role": "",
+        "startYear": "",
+        "endYear": "",
+        "short_description": "",
+        "descriptions": [],
+        "skills": []
+    }
+]
+
+Achievements:
+[
+    {
+        "title": "",
+        "description": "",
+        "short_description": "",
+        "pictures": [],
+        "links": []
+    }
+]

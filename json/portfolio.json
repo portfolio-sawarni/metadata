@@ -13,51 +13,9 @@
 	"skills": "skills.json",
 	"domains": "domains.json",
 	"projects": "projects.json",
-	"experience": [
-		{
-			"companyName": "",
-			"role": "",
-			"startYear": "",
-			"endYear": "",
-			"short_description": "",
-			"descriptions": [],
-			"skills": []
-		}
-	],
-	"achievements": [
-		{
-			"title": "",
-			"description": "",
-			"short_escription": "",
-			"pictures": [],
-			"links": []
-		}
-	],
-	"certifications": [
-		{
-			"title": "",
-			"issuer": "",
-			"picture": "",
-			"link": "",
-			"description": "",
-			"short_description": "",
-			"domain": "",
-			"skills": []
-		}
-	],
-	"hall_of_fame": [
-		{
-			"pictures": [],
-			"domain": "",
-			"skills": [],
-			"description": ""
-		}
-	],
-	"hobbies": [
-		{
-			"name": "",
-			"description": "",
-			"pictures": []
-		}
-	]
+	"experience": "experience.json",
+	"achievements": "achievements.json",
+	"certifications": "certifications.json",
+	"badges": "badges.json",
+	"hobbies": "hobbies.json"
 }

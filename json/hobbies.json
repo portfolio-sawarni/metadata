@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Singing",
+        "description": "When I'm not shipping code, I'm probably singing! 🎤 3 years into classical training and still chasing that perfect note. I also strum a **guitar** 🎸 — official enough to hold a **Grade 1 from Trinity College of Music, London**. Debugging by day, riyaz by night. 🎶",
+        "pictures": [],
+        "achievements": [
+            "Learned classical singing for 3 years.",
+            "Earned Grade 1 from Trinity College of Music, London in Music Theory."
+        ],
+        "display_picture": ""
+    },
+    {
+        "name": "Gaming",
+        "description": "Certified boss-fight survivor 🎮 — PS5 owner who's platinum-hunting through epics like Spider-Man, Ghost of Tsushima, and God of War. Great for unwinding after a long sprint, and honestly, half my UI inspiration comes from game menus.",
+        "pictures": [],
+        "achievements": [
+            "Learned classical singing for 3 years.",
+            "Earned Grade 1 from Trinity College of Music, London in Music Theory."
+        ],
+        "display_picture": ""
+    }
+]
