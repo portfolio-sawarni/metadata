@@ -5,6 +5,9 @@ inside the [json/](json/) folder. The script
 [validate_and_combine_json.py](validate_and_combine_json.py) validates those files
 and merges them into a single `main.json` that the front-end consumes.
 
+## Access Link
+https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/main.json
+
 ## Layout
 
 ```
