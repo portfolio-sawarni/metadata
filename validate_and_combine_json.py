@@ -8,6 +8,11 @@ JSON_DIR = os.path.join(BASE_DIR, "json")
 PORTFOLIO_FILE = "portfolio.json"
 # main.json is written outside the json folder, next to this script.
 OUTPUT_PATH = os.path.join(BASE_DIR, "main.json")
+DEFAULT_IMAGE_PATH = "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/"
+
+# Keys anywhere in the combined output that hold image paths. Values may be a
+# single path (string) or a list of paths.
+IMAGE_KEYS = {"display_picture", "picture", "pictures"}
 
 # Files whose records reference skills, and the field holding the skill ids.
 SKILL_SOURCES = {
@@ -166,6 +171,36 @@ def validate_experience_years(errors):
             )
 
 
+def _resolve_image_path(value):
+    """Prefix a relative image path with the metadata base URL.
+
+    Absolute URLs (http/https) are kept as-is, and empty values stay empty.
+    """
+    if not isinstance(value, str) or value == "":
+        return value
+    if value.lower().startswith(("http://", "https://")):
+        return value
+    return DEFAULT_IMAGE_PATH + value.lstrip("/")
+
+
+def resolve_image_paths(data):
+    """Walk the combined data and expand every image path in IMAGE_KEYS."""
+    if isinstance(data, dict):
+        resolved = {}
+        for key, value in data.items():
+            if key in IMAGE_KEYS:
+                if isinstance(value, list):
+                    resolved[key] = [_resolve_image_path(item) for item in value]
+                else:
+                    resolved[key] = _resolve_image_path(value)
+            else:
+                resolved[key] = resolve_image_paths(value)
+        return resolved
+    if isinstance(data, list):
+        return [resolve_image_paths(item) for item in data]
+    return data
+
+
 def combine(portfolio):
     combined = {}
     for key, value in portfolio.items():
@@ -182,6 +217,8 @@ def combine(portfolio):
             }
         else:
             combined[key] = value
+
+    combined = resolve_image_paths(combined)
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as handle:
         json.dump(combined, handle, indent=4, ensure_ascii=False)

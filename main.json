@@ -1,7 +1,7 @@
 {
     "about": {
         "name": "Sawarni Swaroop",
-        "display_picture": "/assets/dp/dp1.png",
+        "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/dp/dp2.png",
         "description": "",
         "short_description": ""
     },
@@ -256,9 +256,7 @@
     "achievements": [
         {
             "title": "Winner at Hackathon at Nomia Limited",
-            "description": "Traditional keyword-based search fails when users describe what they're looking for in their own words instead of using exact product terms — leading to poor category matches and frustrated users. So I built A semantic search engine that maps natural-language product descriptions to the correct product category using vector embeddings, instead of relying on keyword matching.",
-            "pictures": [],
-            "links": []
+            "description": "Traditional keyword-based search fails when users describe what they're looking for in their own words instead of using exact product terms — leading to poor category matches and frustrated users. So I built A semantic search engine that maps natural-language product descriptions to the correct product category using vector embeddings, instead of relying on keyword matching."
         }
     ],
     "certifications": [
