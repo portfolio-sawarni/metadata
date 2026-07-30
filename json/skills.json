@@ -23,5 +23,6 @@
     {"unique_id": "vector_embedding", "name": "Vector Embedding", "type": "mainstream", "displayable": false},
     {"unique_id": "pydantic", "name": "Pydantic", "type": "mainstream", "displayable": false},
     {"unique_id": "git", "name": "Git", "type": "mainstream", "displayable": false},
-    {"unique_id": "streamlit", "name": "Streamlit", "type": "mainstream", "displayable": false}
+    {"unique_id": "streamlit", "name": "Streamlit", "type": "mainstream", "displayable": false},
+    {"unique_id": "ts", "name": "Typescript", "type": "mainstream", "displayable": false}
 ]
