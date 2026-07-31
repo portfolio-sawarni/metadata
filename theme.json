@@ -49,30 +49,7 @@
     "be_development": "#3b82f6",
     "cyber_security": "#ef4444"
   },
-  "domain_colors_by_name": {
-    "AI Engineering": "#6366f1",
-    "Frontend Development": "#14b8a6",
-    "Frontend": "#14b8a6",
-    "Backend Development": "#3b82f6",
-    "Backend": "#3b82f6",
-    "Cyber Security": "#ef4444"
-  },
   "domain_fallback_palette_indices": [9, 6, 4, 0],
-  "platform_accents": {
-    "HackerRank": "#14b8a6",
-    "Google Cloud": "#14b8a6",
-    "GoogleCloud": "#14b8a6",
-    "Duolingo": "#14b8a6",
-    "LeetCode": "#fb7185",
-    "Stack Overflow": "#fb7185",
-    "StackOverflow": "#fb7185",
-    "Credly": "#4f46e5",
-    "Coursera": "#4f46e5",
-    "Kaggle": "#6366f1",
-    "GitHub": "#14151a",
-    "Github": "#14151a",
-    "freeCodeCamp": "#14151a"
-  },
   "default_accent": "#4f46e5",
   "achievement_crests": [
     ["#6366f1", "#4f46e5", "#312e81"],

@@ -49,14 +49,8 @@ skill_palette
 domain_colors
     Object. See DATA SECTIONS below.
 
-domain_colors_by_name
-    Object. See DATA SECTIONS below.
-
 domain_fallback_palette_indices
     Array of integers. See DATA SECTIONS below.
-
-platform_accents
-    Object. See DATA SECTIONS below.
 
 default_accent
     Single value. See DATA SECTIONS below.
@@ -127,8 +121,7 @@ teal-2
     Used only by the animated background wash - the mid-right blob.
 
 rose
-    Used only by the animated background wash - the lower blob. (The same value
-    appears independently under platform_accents; the two are not linked.)
+    Used only by the animated background wash - the lower blob.
 
 --- Backgrounds and surfaces -------------------------------------------------
 
@@ -217,18 +210,10 @@ domain_colors
     put. Applies to domain chips, certificate accents, and the gradient cover a
     project falls back to when it has no picture of its own.
 
-domain_colors_by_name
-    Type: object, keyed by a domain's display name.
-
-    The second step of the lookup chain. Consulted only when a domain's
-    unique_id is absent from domain_colors. Because the display name is what is
-    matched, several spellings of the same domain can be listed and pointed at
-    the same value - useful when the content is not strict about naming.
-
 domain_fallback_palette_indices
     Type: array of integers.
 
-    The last step of that chain, used for domains matched by neither map above.
+    The fallback for domains whose unique_id is absent from domain_colors.
     Each integer is a position in skill_palette, and unmatched domains take
     them in turn by declared order. This is why a newly added domain still
     renders sensibly without any edit to this file.
@@ -236,26 +221,18 @@ domain_fallback_palette_indices
     Because the values are positions, reordering skill_palette changes what
     these resolve to.
 
-platform_accents
-    Type: object, keyed by the platform name in badges.json.
-
-    The accent for each Trophy Wall badge. Each badge disc is drawn as a
-    gradient running from its platform accent into the "ink" token, so the
-    accent is the visible top of the disc rather than the whole of it.
-
-    Listing more than one spelling of a platform is intentional and expected,
-    since the content is not strict about capitalisation or spacing. Each
-    spelling needs its own entry.
-
 default_accent
     Type: single colour.
 
-    The fallback for platform_accents: any platform not listed there uses this.
-    It is also the disc colour for an achievement rendered without a crest.
+    The disc colour for an achievement rendered without a crest.
 
     It is kept separate from the "accent" token even when the two hold the same
-    value, so that unlisted platforms can be made deliberately distinct - a
-    quick way to spot content whose platform name has not been mapped yet.
+    value, so the emblem fallback can be tuned without moving the accent that
+    the rest of the page is built on.
+
+    (Trophy Wall badge discs take no colour from this file: each disc shows the
+    badge's own display_picture from badges.json, and falls back to a hatched
+    image well when that field is blank.)
 
 achievement_crests
     Type: array of three-element arrays, each [light, mid, deep].

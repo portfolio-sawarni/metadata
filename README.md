@@ -54,14 +54,16 @@ any validation fails, nothing is written and every issue is reported.
 1. **Valid JSON** — every `*.json` file in [json/](json/) parses correctly.
 2. **Referenced files exist** — every `.json` file named in `portfolio.json`
    (top-level or nested) is present in the folder.
-3. **Skill references** — every skill id used in `experience.json`,
+3. **Unique ids** — every record in `skills.json` and `domains.json` has a
+   non-empty `unique_id`, and no id is repeated within a file.
+4. **Skill references** — every skill id used in `experience.json`,
    `certifications.json`, `badges.json`, and `projects.json` (in each file's
    `skills` field) exists as a `unique_id` in `skills.json`.
-4. **Domain references** — every domain id referenced exists as a `unique_id` in
+5. **Domain references** — every domain id referenced exists as a `unique_id` in
    `domains.json`. Note the field name differs by file: `projects.json` uses a
    list field `domains`, while `certifications.json` and `badges.json` use a
    single-string field `domain`.
-5. **Experience years** — in `experience.json`, `startYear` must be a four-digit
+6. **Experience years** — in `experience.json`, `startYear` must be a four-digit
    year (`YYYY`); `endYear` must be `YYYY` or the string `"Present"`; and when
    `endYear` is a concrete year it must not be earlier than `startYear`.
 
@@ -113,10 +115,8 @@ front-end with no code change.
 | `tokens` | Named colours mirrored into CSS custom properties (`--color-<key>`): text (`ink`, `ink-2`…`ink-4`), backgrounds (`bg`, `dark-bg`, `surface`…), and accents (`accent`, `teal`, `rose`…). |
 | `skill_palette` | The rotating chip palette. Skills take a colour by their declared position in `skills.json`, so order — not this list — decides which skill gets which colour. |
 | `domain_colors` | Fixed domain colours keyed by `unique_id` from `domains.json`. |
-| `domain_colors_by_name` | Same, keyed by display name — the fallback when a domain's id isn't listed above. |
-| `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains neither map names. |
-| `platform_accents` | Badge disc accents on the Trophy Wall, keyed by platform name. |
-| `default_accent` | Accent for platforms not listed above. |
+| `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains `domain_colors` doesn't name. |
+| `default_accent` | Accent for an achievement emblem rendered without a crest. |
 | `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
 
 Values are CSS colours; plain 6-digit hex is the convention, and 8-digit hex

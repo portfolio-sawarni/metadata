@@ -86,6 +86,43 @@ def validate_referenced_files_exist(errors, portfolio):
                 )
 
 
+def validate_unique_ids(errors):
+    """Every record in skills.json and domains.json must carry a unique_id.
+
+    Nothing downstream can reference — or colour — a record without one, so a
+    missing, blank or duplicated id is an error rather than a warning.
+    """
+    for filename in ("skills.json", "domains.json"):
+        try:
+            records = _load_json(filename)
+        except (json.JSONDecodeError, OSError):
+            continue  # Reported by validate_json_files.
+
+        if not isinstance(records, list):
+            errors.append("{} must be an array of objects.".format(filename))
+            continue
+
+        seen = set()
+        for index, record in enumerate(records):
+            if not isinstance(record, dict):
+                errors.append("{}[{}] is not an object.".format(filename, index))
+                continue
+
+            unique_id = record.get("unique_id")
+            if not isinstance(unique_id, str) or unique_id.strip() == "":
+                errors.append(
+                    "{}[{}] is missing a unique_id "
+                    "(found '{}').".format(filename, index, unique_id)
+                )
+                continue
+
+            if unique_id in seen:
+                errors.append(
+                    "{}[{}] repeats unique_id '{}'.".format(filename, index, unique_id)
+                )
+            seen.add(unique_id)
+
+
 def validate_skill_references(errors):
     try:
         skills = _load_json("skills.json")
@@ -240,6 +277,7 @@ def main():
 
     if portfolio is not None:
         validate_referenced_files_exist(errors, portfolio)
+    validate_unique_ids(errors)
     validate_skill_references(errors)
     validate_domain_references(errors)
     validate_experience_years(errors)
