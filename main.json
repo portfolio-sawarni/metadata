@@ -4,7 +4,7 @@
         "display_picture": "",
         "description": "Full-stack developer with a serious AI habit. Converts coffee into clean code, half-baked ideas into shipped products, and \"that's impossible\" into a pull request.",
         "short_description": "",
-        "resume": ""
+        "resume": "https://github.com/portfolio-sawarni/metadata/raw/d0f7a7707dbde057c86b3c9ba9e7ce6f6779372e/assets/resume/resume.pdf"
     },
     "contact": {
         "mobile_number": "",
@@ -285,7 +285,8 @@
     "achievements": [
         {
             "title": "Winner at Hackathon at Nomia Limited",
-            "description": "Traditional keyword-based search fails when users describe what they're looking for in their own words instead of using exact product terms — leading to poor category matches and frustrated users. So I built A semantic search engine that maps natural-language product descriptions to the correct product category using vector embeddings, instead of relying on keyword matching."
+            "description": "Traditional keyword-based search fails when users describe what they're looking for in their own words instead of using exact product terms — leading to poor category matches and frustrated users. So I built A semantic search engine that maps natural-language product descriptions to the correct product category using vector embeddings, instead of relying on keyword matching.",
+            "short_description": "Traditional keyword search fails when users describe products in their own words. I built a semantic search engine that accurately maps natural-language descriptions to correct product categories using vector embeddings."
         }
     ],
     "certifications": [
