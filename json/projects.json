@@ -24,9 +24,10 @@
         "title": "Jharkhand Scientifics",
         "pictures": [
             "/assets/jharkhand_scientifics/jharkhand_scientifics.png",
-            "/assets/jharkhand_scientifics/Mobile-responsive-partial.png",
+            "/assets/jharkhand_scientifics/Mobile-responsive-partial.jpeg",
+            "/assets/jharkhand_scientifics/Home-full.jpeg",
             "/assets/jharkhand_scientifics/Contact-full.jpeg",
-            "/assets/jharkhand_scientifics/Product-full.jpeg"
+            "/assets/jharkhand_scientifics/Product-partial.png"
         ],
         "demo": "",
         "link": "https://github.com/sawarni99/jharkhand-scientifics",
