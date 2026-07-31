@@ -67,23 +67,28 @@
     ["#a78bfa", "#8b5cf6", "#4c1d95"],
     ["#38bdf8", "#3b82f6", "#1e3a8a"]
   ],
+  "certificate_crests": [
+    ["#818cf8", "#4f46e5", "#312e81"],
+    ["#5eead4", "#0d9488", "#134e4a"],
+    ["#fcd34d", "#d97706", "#78350f"],
+    ["#f9a8d4", "#db2777", "#831843"],
+    ["#7dd3fc", "#0284c7", "#0c4a6e"],
+    ["#c4b5fd", "#7c3aed", "#4c1d95"]
+  ],
   "strings": {
     "experience": {
       "kicker": "02 — Experience",
       "title": "Where I've worked",
-      "detail_kicker": "Experience",
       "detail_outro": "Titles changed a few times. The habit of leaving things tidier than I found them didn't."
     },
     "projects": {
       "kicker": "03 — Projects",
       "title": "Selected work",
-      "detail_kicker": "Project",
       "detail_outro": "It started as a weekend. It didn't stay one."
     },
     "certificates": {
       "kicker": "04 — Certifications",
       "title": "Certificates",
-      "detail_kicker": "04 — Archive",
       "detail_title": "All Certificates",
       "empty_body": "No certificate matches this domain and skill combination."
     },
@@ -94,7 +99,6 @@
     "trophy_wall": {
       "kicker": "06 — Bragging rights",
       "title": "The Trophy Wall",
-      "detail_kicker": "06 — Bragging rights",
       "detail_title": "The Trophy Wall",
       "detail_intro": "Badges, streaks and certificates mounted where I can see them. Every disc is one habit that stuck.",
       "detail_outro": "Collect enough small wins and they start to look like a habit.",
@@ -104,7 +108,6 @@
     "beyond_work": {
       "kicker": "07 — Off the clock",
       "title": "Beyond Work",
-      "detail_kicker": "07 — Off the clock",
       "detail_title": "Beyond Work",
       "detail_intro": "The hours that don't show up on a résumé — notes held too long, boss fights fought too late.",
       "detail_outro": "Same person, different tempo."

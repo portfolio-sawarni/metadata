@@ -120,6 +120,7 @@ changing a string re-voices it.
 | `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains `domain_colors` doesn't name. |
 | `default_accent` | Accent for an achievement emblem rendered without a crest. |
 | `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
+| `certificate_crests` | Certificate seal-disc gradients, each `[light, mid, deep]`, rotating by certification order. |
 | `strings` | Fixed display copy — section kickers, titles, intros and closing lines. See below. |
 
 Values in the colour fields are CSS colours; plain 6-digit hex is the
@@ -143,9 +144,8 @@ same key vocabulary rather than naming its lines itself:
 
 | Key | Where it shows |
 |---|---|
-| `kicker` | The mono, uppercase line above the title, on the home page. |
+| `kicker` | The mono, uppercase line above the title — on the home page, and on the route that section leads to. |
 | `title` | The home page section heading. |
-| `detail_kicker` | The kicker on the route that section leads to. |
 | `detail_title` | The heading on that route. |
 | `detail_intro` | The paragraph directly under that heading. |
 | `detail_outro` | The closing line at the foot of that route. |
@@ -153,11 +153,10 @@ same key vocabulary rather than naming its lines itself:
 
 A group carries only the keys it renders. `experience` and `projects` are a
 heading over a list on the home page, so alongside `kicker`/`title` they carry
-`detail_kicker` and `detail_outro` — the detail route takes its own heading from
-the job or project, and needs no framing paragraph. `trophy_wall` and
-`beyond_work` are routes of their own, so `kicker`/`title` belong to the home
-page CTA and the whole `detail_*` set to the page (the two kickers carry
-different section numbers, which is why they are separate keys). `certificates`
+`detail_outro` — the detail route takes its own heading from the job or project,
+and needs no framing paragraph. `trophy_wall` and `beyond_work` are routes of
+their own, so `title` belongs to the home page CTA and the `detail_*` set to the
+page, with `kicker` printed on both. `certificates`
 adds `empty_body` for the filtered archive. `footer` and `status` follow the
 same shape: `footer.kicker` is the message form's label and `footer.title` the
 closing headline; `status.kicker` is the line under the loading mark and

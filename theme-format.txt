@@ -64,6 +64,9 @@ project_covers
 achievement_crests
     Array of arrays. See DATA SECTIONS below.
 
+certificate_crests
+    Array of arrays. See DATA SECTIONS below.
+
 strings
     Object of display copy, grouped by section. See STRINGS below.
 
@@ -270,6 +273,19 @@ achievement_crests
     list of achievements reads as a matched set instead of a repeat. The number
     of ramps is free.
 
+certificate_crests
+    Type: array of three-element arrays, each [light, mid, deep].
+
+    The gradients on the seal disc at the top of each certificate card, on the
+    home preview grid. Every card carries the same certificate mark, so the
+    ramp is what tells one card from the next; as with achievement_crests the
+    three entries are one hue's opening, middle and closing stops, and the
+    middle stop sits past the centre to dome the disc.
+
+    Ramps rotate by the order of certifications.json. The number of ramps is
+    free; to recolour one certificate, reorder that file - editing a ramp moves
+    every certificate that lands on that position.
+
 
 ================================================================================
 STRINGS
@@ -306,10 +322,10 @@ strings
     lines: kicker and title are what the home page prints, and the detail_*
     set is what the route that section leads to prints.
 
-      kicker          The mono, uppercase line above the title on the home
-                      page. The convention is "NN - Section Name".
+      kicker          The mono, uppercase line above the title, on the home
+                      page and on the route that section leads to. The
+                      convention is "NN - Section Name".
       title           The home page section heading.
-      detail_kicker   The kicker on the route that section leads to.
       detail_title    The heading on that route.
       detail_intro    The paragraph directly under that heading.
       detail_outro    The closing line at the foot of that route, set in the
@@ -318,12 +334,11 @@ strings
                       matches no rows, or content that failed to load.
 
     A group carries only the keys it renders. experience and projects are a
-    heading over a list on the home page, so they carry kicker, title,
-    detail_kicker and detail_outro - the detail route takes its heading from
-    the job or project itself and opens with no framing paragraph.
-    trophy_wall and beyond_work are routes in their own right: kicker and
-    title belong to the home page CTA, the detail_* set to the page. Their two
-    kickers carry different section numbers, which is why both are stored.
+    heading over a list on the home page, so they carry kicker, title and
+    detail_outro - the detail route takes its heading from the job or project
+    itself and opens with no framing paragraph. trophy_wall and beyond_work
+    are routes in their own right: title belongs to the home page CTA, the
+    detail_* set to the page, and kicker is printed on both.
     certificates adds empty_body for its filtered archive. footer and status
     keep the same shape - footer.kicker is the message form's label and
     footer.title the closing headline; status.kicker is the line printed under
