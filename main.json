@@ -226,7 +226,9 @@
         {
             "title": "Jharkhand Scientifics",
             "pictures": [
-                "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/jharkhand_scientifics/jharkhand_scientifics.png"
+                "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/jharkhand_scientifics/jharkhand_scientifics.png",
+                "https://github.com/sawarni99/jharkhand-scientifics/blob/master/public/screenshots/Home-full.jpeg",
+                "https://github.com/sawarni99/jharkhand-scientifics/blob/master/public/screenshots/Mobile-resonsive-partial.jpeg"
             ],
             "demo": "",
             "link": "https://github.com/sawarni99/jharkhand-scientifics",
