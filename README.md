@@ -5,8 +5,15 @@ inside the [json/](json/) folder. The script
 [validate_and_combine_json.py](validate_and_combine_json.py) validates those files
 and merges them into a single `main.json` that the front-end consumes.
 
-## Access Link
-https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/main.json
+The portfolio's *colours* live separately in [theme.json](theme.json), which the
+front-end fetches as its own endpoint — see [Theme](#theme) below.
+
+## Access Links
+
+| Document | URL |
+|---|---|
+| Content | https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/main.json |
+| Theme | https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/theme.json |
 
 ## Layout
 
@@ -24,7 +31,8 @@ portfolio-metadata/
 │   ├── hobbies.json
 │   └── social_media.json
 ├── validate_and_combine_json.py
-└── main.json                 # generated output (do not edit by hand)
+├── main.json                 # generated output (do not edit by hand)
+└── theme.json                # colour system (edited by hand)
 ```
 
 ### `portfolio.json`
@@ -92,3 +100,30 @@ Validation failed with 2 issue(s):
 
 Paths are resolved relative to the script's own location, so it can be run from
 any working directory.
+
+## Theme
+
+[theme.json](theme.json) holds every colour the site paints with. It is written
+by hand and served as-is — it is not part of the combine script, so editing it
+takes effect as soon as the file is published. Changing a hex here re-skins the
+front-end with no code change.
+
+| Field | What it colours |
+|---|---|
+| `tokens` | Named colours mirrored into CSS custom properties (`--color-<key>`): text (`ink`, `ink-2`…`ink-4`), backgrounds (`bg`, `dark-bg`, `surface`…), and accents (`accent`, `teal`, `rose`…). |
+| `skill_palette` | The rotating chip palette. Skills take a colour by their declared position in `skills.json`, so order — not this list — decides which skill gets which colour. |
+| `domain_colors` | Fixed domain colours keyed by `unique_id` from `domains.json`. |
+| `domain_colors_by_name` | Same, keyed by display name — the fallback when a domain's id isn't listed above. |
+| `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains neither map names. |
+| `platform_accents` | Badge disc accents on the Trophy Wall, keyed by platform name. |
+| `default_accent` | Accent for platforms not listed above. |
+| `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
+
+Values are CSS colours; plain 6-digit hex is the convention, and 8-digit hex
+(`#rrggbbaa`) works where a baked-in alpha is wanted. Translucent shadows and
+glass fills are derived from `tokens` in the front-end, so they follow along
+without needing their own entries.
+
+Omitting a token is not an error: anything the document leaves out keeps the
+front-end's white placeholder, which is also what shows while the request is in
+flight.

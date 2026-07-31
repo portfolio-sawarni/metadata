@@ -1,0 +1,284 @@
+================================================================================
+THEME.JSON - FORMAT REFERENCE
+================================================================================
+
+theme.json is the portfolio's colour system. It is served as its own endpoint,
+separately from main.json, and the front-end fetches it at startup. Editing a
+value here re-skins the site with no code change.
+
+The file has two kinds of sections:
+
+  tokens          - named colours, mirrored into CSS custom properties and read
+                    by the entire stylesheet
+  data sections   - colours that are indexed by position or keyed by a name,
+                    read by the front-end's palette helpers
+
+Values are CSS colours. Six-digit hex is the convention. Eight-digit hex
+(#rrggbbaa) is accepted where a baked-in transparency is wanted.
+
+Nothing in this file controls layout, spacing, blur radii or shadow geometry -
+only which colour is used. Opacity levels for shadows and glass fills are
+derived in the front-end from the tokens below, so they follow along
+automatically and need no entries of their own.
+
+Omitting a key is not an error. Anything left out keeps the front-end's
+placeholder, which is also what the site shows while the request is in flight.
+
+
+================================================================================
+TOP-LEVEL KEYS
+================================================================================
+
+version
+    Schema version of this document. Bump it if the shape of the file ever
+    changes, so a front-end can tell which contract it is reading.
+
+name
+    Human label for the theme. Not rendered; it exists so several theme files
+    can be told apart.
+
+description
+    Free-text note about the theme. Not rendered.
+
+tokens
+    Object of named colours. See TOKENS below.
+
+skill_palette
+    Array. See DATA SECTIONS below.
+
+domain_colors
+    Object. See DATA SECTIONS below.
+
+domain_colors_by_name
+    Object. See DATA SECTIONS below.
+
+domain_fallback_palette_indices
+    Array of integers. See DATA SECTIONS below.
+
+platform_accents
+    Object. See DATA SECTIONS below.
+
+default_accent
+    Single value. See DATA SECTIONS below.
+
+achievement_crests
+    Array of arrays. See DATA SECTIONS below.
+
+
+================================================================================
+TOKENS
+================================================================================
+
+Each key in "tokens" becomes a CSS custom property named --color-<key> on the
+document root, plus a companion --color-<key>-rgb holding the same value as
+space-separated channels. The -rgb form is what lets shadows, borders and glass
+fills use a token at partial opacity, so a single edit moves the solid colour
+and every translucent tint derived from it together.
+
+These tokens also back the utility classes the markup already uses (text-ink,
+bg-bg, and so on), which is why renaming a key is a breaking change while
+changing its value is not.
+
+--- Text ---------------------------------------------------------------------
+
+ink
+    Primary text: body copy, headings, links. The most widely used token in the
+    system. It is also the darkest stop of most gradients (primary buttons,
+    badge discs, call-to-action arrows) and the tint every downward shadow is
+    built from, so it carries the site's sense of depth as well as its text.
+
+ink-2
+    Second-level text: paragraphs inside cards, rendered markdown body copy,
+    project and experience descriptions.
+
+ink-3
+    Third-level text: captions and secondary detail lines.
+
+ink-4
+    Faintest text: the monospaced kickers above section titles, section
+    numbering, and the placeholder captions shown inside empty media wells.
+
+on-dark
+    Text that sits on a dark surface rather than on the page background. Used
+    for primary button labels, the Beyond Work page's headings and body copy,
+    outgoing chat bubbles, and the hobby cards.
+
+--- Accents ------------------------------------------------------------------
+
+accent
+    The primary accent. Drives the primary button, focus rings, link hover, the
+    active carousel dot, active filter chips, and the glow shadows that sit
+    under all of those. The single highest-impact token in the file.
+
+accent-2
+    A companion to "accent", used where a gradient needs a lighter opening
+    stop: the loading indicator, the chat launcher, and the hobby card discs.
+
+accent-3
+    Used only by the animated background wash - the blob nearest the top-left
+    of the page.
+
+teal
+    The secondary accent. Appears in the hero headline gradient, the experience
+    timeline spine, the Trophy Wall call-to-action arrow, and as the closing
+    stop of the chat and loading gradients.
+
+teal-2
+    Used only by the animated background wash - the mid-right blob.
+
+rose
+    Used only by the animated background wash - the lower blob. (The same value
+    appears independently under platform_accents; the two are not linked.)
+
+--- Backgrounds and surfaces -------------------------------------------------
+
+bg
+    The page background.
+
+dark-bg
+    The backdrop of the dark Beyond Work page, and the closing frame of the
+    light-to-dark page transition.
+
+dark-bg-2
+    The raised centre of that dark page's radial backdrop, which keeps the
+    surface from reading as flat.
+
+white
+    Rarely painted solid. Almost every use is at partial opacity: the highlight
+    side of the neumorphic shadows, card borders, frosted navigation, and the
+    lighter stop of the glass gradients. Treat it as the system's "light tint"
+    rather than as a fill.
+
+black
+    The same idea in the other direction: the deep shadows on the dark hobby
+    cards, media wells and badge tiles. Rarely painted solid.
+
+surface
+    The opening stop of the raised button gradient.
+
+surface-2
+    The closing stop of that same raised button gradient. Together with
+    "surface" it sets how pronounced a raised control looks.
+
+surface-3
+    The closing stop of the light pill button on the Beyond Work page, which
+    needs a slightly different landing than the standard raised button.
+
+surface-sunken
+    The recessed background behind the certificate archive's filter bar.
+
+glass-2
+    The cooler closing stop of every glass card gradient. Because glass cards
+    are the site's dominant surface, this token shapes the overall impression
+    more than its single entry suggests.
+
+bezel-from
+bezel-to
+    The two stops of the pressed ring that frames achievement emblems and
+    trophy badge discs. Read as a pair; inverting them turns the ring from
+    recessed to raised.
+
+select
+    The text-selection highlight.
+
+marquee-shadow
+    The soft shadow cast by the scrolling skills text. Stored with a baked-in
+    alpha channel (eight-digit hex), because it is a shadow tint rather than a
+    surface.
+
+
+================================================================================
+DATA SECTIONS
+================================================================================
+
+skill_palette
+    Type: array of colours.
+
+    The rotating palette for skill chips. A skill is assigned an entry by its
+    position in skills.json, not by its name or id - the first skill takes the
+    first entry, and the list wraps once it runs out. Assignment happens once
+    per fetch, which is what keeps a given skill the same colour on the home
+    page and on every detail page.
+
+    Consequences worth knowing:
+      - To recolour one specific skill, reorder skills.json. Editing this list
+        recolours the whole rotation, not one skill.
+      - The length is free. Adding entries lengthens the cycle before it
+        repeats; removing them shortens it.
+      - Positions in this array are referenced by name elsewhere in the file
+        (see domain_fallback_palette_indices), so reordering it also moves
+        those fallbacks.
+
+domain_colors
+    Type: object, keyed by a domain's unique_id from domains.json.
+
+    Fixed colours for domains. Unlike skills these are pinned rather than
+    rotated, because a domain's colour carries meaning and is expected to stay
+    put. Applies to domain chips, certificate accents, and the gradient cover a
+    project falls back to when it has no picture of its own.
+
+domain_colors_by_name
+    Type: object, keyed by a domain's display name.
+
+    The second step of the lookup chain. Consulted only when a domain's
+    unique_id is absent from domain_colors. Because the display name is what is
+    matched, several spellings of the same domain can be listed and pointed at
+    the same value - useful when the content is not strict about naming.
+
+domain_fallback_palette_indices
+    Type: array of integers.
+
+    The last step of that chain, used for domains matched by neither map above.
+    Each integer is a position in skill_palette, and unmatched domains take
+    them in turn by declared order. This is why a newly added domain still
+    renders sensibly without any edit to this file.
+
+    Because the values are positions, reordering skill_palette changes what
+    these resolve to.
+
+platform_accents
+    Type: object, keyed by the platform name in badges.json.
+
+    The accent for each Trophy Wall badge. Each badge disc is drawn as a
+    gradient running from its platform accent into the "ink" token, so the
+    accent is the visible top of the disc rather than the whole of it.
+
+    Listing more than one spelling of a platform is intentional and expected,
+    since the content is not strict about capitalisation or spacing. Each
+    spelling needs its own entry.
+
+default_accent
+    Type: single colour.
+
+    The fallback for platform_accents: any platform not listed there uses this.
+    It is also the disc colour for an achievement rendered without a crest.
+
+    It is kept separate from the "accent" token even when the two hold the same
+    value, so that unlisted platforms can be made deliberately distinct - a
+    quick way to spot content whose platform name has not been mapped yet.
+
+achievement_crests
+    Type: array of three-element arrays, each [light, mid, deep].
+
+    The gradients on the medal disc beside each achievement. The three entries
+    are the opening, middle and closing stops of a single ramp, and the middle
+    stop is placed past the centre, which is what gives the disc its domed
+    look. Each ramp should therefore be three steps of one hue rather than
+    three unrelated values.
+
+    Ramps rotate by achievement order, the same way skill_palette does, so a
+    list of achievements reads as a matched set instead of a repeat. The number
+    of ramps is free.
+
+
+================================================================================
+NOTES
+================================================================================
+
+- Renaming a token key breaks the front-end; changing its value does not.
+- Adding a key the front-end does not know about is harmless - it is ignored.
+- A partial file is valid. Whatever it omits keeps the placeholder rather than
+  falling back to a previous theme, so a half-written file degrades cleanly
+  instead of mixing two themes together.
+- theme.json is written by hand and served as-is. It is not produced by
+  validate_and_combine_json.py and does not need that script run after an edit.
