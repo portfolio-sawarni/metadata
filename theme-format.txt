@@ -58,6 +58,9 @@ domain_fallback_palette_indices
 default_accent
     Single value. See DATA SECTIONS below.
 
+project_covers
+    Array of arrays. See DATA SECTIONS below.
+
 achievement_crests
     Array of arrays. See DATA SECTIONS below.
 
@@ -213,8 +216,7 @@ domain_colors
 
     Fixed colours for domains. Unlike skills these are pinned rather than
     rotated, because a domain's colour carries meaning and is expected to stay
-    put. Applies to domain chips, certificate accents, and the gradient cover a
-    project falls back to when it has no picture of its own.
+    put. Applies to domain chips and certificate accents.
 
 domain_fallback_palette_indices
     Type: array of integers.
@@ -239,6 +241,21 @@ default_accent
     (Trophy Wall badge discs take no colour from this file: each disc shows the
     badge's own display_picture from badges.json, and falls back to a hatched
     image well when that field is blank.)
+
+project_covers
+    Type: array of two-element arrays, each [from, to].
+
+    The gradient a project card falls back to on the home rail when the project
+    has no pictures in main.json. With a picture the card shows pictures[0]
+    instead and none of these values are read.
+
+    Gradients rotate by project order, the same way skill_palette does, so two
+    pictureless projects listed next to each other never land on the same
+    colour and a given project keeps its gradient across renders. The number of
+    pairs is free; adding entries lengthens the cycle before it repeats.
+
+    To recolour one specific project, reorder projects.json - editing a pair
+    moves every project that lands on that position.
 
 achievement_crests
     Type: array of three-element arrays, each [light, mid, deep].
