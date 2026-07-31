@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "Default",
-  "description": "Every colour the portfolio front-end paints with. Edit the hex values here to re-skin the site without touching the code. Layout, spacing and shadow geometry stay in the front-end; only colour lives here.",
+  "description": "Every colour the portfolio front-end paints with, plus the fixed display copy it prints. Edit the hex values here to re-skin the site and the strings to re-voice it, without touching the code. Layout, spacing and shadow geometry stay in the front-end.",
   "tokens": {
     "bg": "#fbfbfa",
     "ink": "#14151a",
@@ -58,5 +58,60 @@
     ["#fb7185", "#e11d48", "#881337"],
     ["#a78bfa", "#8b5cf6", "#4c1d95"],
     ["#38bdf8", "#3b82f6", "#1e3a8a"]
-  ]
+  ],
+  "strings": {
+    "experience": {
+      "kicker": "02 — Experience",
+      "title": "Where I've worked",
+      "detail_kicker": "Experience",
+      "detail_outro": "Titles changed a few times. The habit of leaving things tidier than I found them didn't."
+    },
+    "projects": {
+      "kicker": "03 — Projects",
+      "title": "Selected work",
+      "detail_kicker": "Project",
+      "detail_outro": "It started as a weekend. It didn't stay one."
+    },
+    "certificates": {
+      "kicker": "04 — Certifications",
+      "title": "Certificates",
+      "detail_kicker": "04 — Archive",
+      "detail_title": "All Certificates",
+      "empty_body": "No certificate matches this domain and skill combination."
+    },
+    "achievements": {
+      "kicker": "05 — Achievements",
+      "title": "Achievements"
+    },
+    "trophy_wall": {
+      "kicker": "06 — Bragging rights",
+      "title": "The Trophy Wall",
+      "detail_kicker": "06 — Bragging rights",
+      "detail_title": "The Trophy Wall",
+      "detail_intro": "Badges, streaks and certificates mounted where I can see them. Every disc is one habit that stuck.",
+      "detail_outro": "Collect enough small wins and they start to look like a habit.",
+      "stat_badges": "Badges earned",
+      "stat_platforms": "Platforms"
+    },
+    "beyond_work": {
+      "kicker": "07 — Off the clock",
+      "title": "Beyond Work",
+      "detail_kicker": "07 — Off the clock",
+      "detail_title": "Beyond Work",
+      "detail_intro": "The hours that don't show up on a résumé — notes held too long, boss fights fought too late.",
+      "detail_outro": "Same person, different tempo."
+    },
+    "articles": {
+      "kicker": "08 — Writing",
+      "title": "Articles"
+    },
+    "footer": {
+      "kicker": "Send me a message",
+      "title": "Let's build something."
+    },
+    "status": {
+      "kicker": "Loading portfolio…",
+      "empty_body": "The portfolio data could not be loaded."
+    }
+  }
 }

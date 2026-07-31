@@ -2,24 +2,27 @@
 THEME.JSON - FORMAT REFERENCE
 ================================================================================
 
-theme.json is the portfolio's colour system. It is served as its own endpoint,
-separately from main.json, and the front-end fetches it at startup. Editing a
-value here re-skins the site with no code change.
+theme.json is the portfolio's colour system and its fixed display copy. It is
+served as its own endpoint, separately from main.json, and the front-end fetches
+it at startup. Editing a colour here re-skins the site with no code change;
+editing a string re-voices it.
 
-The file has two kinds of sections:
+The file has three kinds of sections:
 
   tokens          - named colours, mirrored into CSS custom properties and read
                     by the entire stylesheet
   data sections   - colours that are indexed by position or keyed by a name,
                     read by the front-end's palette helpers
+  strings         - the wording the site prints that is not somebody's
+                    portfolio data: kickers, titles, intros, closing lines
 
-Values are CSS colours. Six-digit hex is the convention. Eight-digit hex
+Colour values are CSS colours. Six-digit hex is the convention. Eight-digit hex
 (#rrggbbaa) is accepted where a baked-in transparency is wanted.
 
 Nothing in this file controls layout, spacing, blur radii or shadow geometry -
-only which colour is used. Opacity levels for shadows and glass fills are
-derived in the front-end from the tokens below, so they follow along
-automatically and need no entries of their own.
+only which colour is used and which words are printed. Opacity levels for
+shadows and glass fills are derived in the front-end from the tokens below, so
+they follow along automatically and need no entries of their own.
 
 Omitting a key is not an error. Anything left out keeps the front-end's
 placeholder, which is also what the site shows while the request is in flight.
@@ -57,6 +60,9 @@ default_accent
 
 achievement_crests
     Array of arrays. See DATA SECTIONS below.
+
+strings
+    Object of display copy, grouped by section. See STRINGS below.
 
 
 ================================================================================
@@ -246,6 +252,77 @@ achievement_crests
     Ramps rotate by achievement order, the same way skill_palette does, so a
     list of achievements reads as a matched set instead of a repeat. The number
     of ramps is free.
+
+
+================================================================================
+STRINGS
+================================================================================
+
+strings
+    Type: object of objects. Each inner object is one section or route, and its
+    keys are the individual lines that section prints.
+
+    What belongs here is copy that is part of the design rather than part of
+    anyone's portfolio: the numbered kicker above a heading, the heading itself,
+    the paragraph under it, and the single line that closes the section. Names,
+    blurbs, roles, project write-ups and hobby descriptions are content and come
+    from main.json instead. Button and link labels, form fields and accessible
+    names stay in the front-end, because changing their wording is a change to
+    what the control does, not to how the page reads.
+
+    Groups:
+
+      experience      02 - the timeline section, and the kicker on a company's
+                      detail route
+      projects        03 - the project rail, and the kicker on a project's
+                      detail route
+      certificates    04 - the preview grid, plus the archive route's own
+                      heading and its no-results line
+      achievements    05 - the achievements list
+      trophy_wall     the Trophy Wall route and the CTA that leads to it
+      beyond_work     the Beyond Work route and the CTA that leads to it
+      articles        08 - the writing index
+      footer          the closing headline and the message form's label
+      status          the loading and error screens
+
+    Keys. Every group draws from one vocabulary rather than naming its own
+    lines: kicker and title are what the home page prints, and the detail_*
+    set is what the route that section leads to prints.
+
+      kicker          The mono, uppercase line above the title on the home
+                      page. The convention is "NN - Section Name".
+      title           The home page section heading.
+      detail_kicker   The kicker on the route that section leads to.
+      detail_title    The heading on that route.
+      detail_intro    The paragraph directly under that heading.
+      detail_outro    The closing line at the foot of that route, set in the
+                      display face. One thought, not a paragraph.
+      empty_body      Shown when there is nothing to render - a filter that
+                      matches no rows, or content that failed to load.
+
+    A group carries only the keys it renders. experience and projects are a
+    heading over a list on the home page, so they carry kicker, title,
+    detail_kicker and detail_outro - the detail route takes its heading from
+    the job or project itself and opens with no framing paragraph.
+    trophy_wall and beyond_work are routes in their own right: kicker and
+    title belong to the home page CTA, the detail_* set to the page. Their two
+    kickers carry different section numbers, which is why both are stored.
+    certificates adds empty_body for its filtered archive. footer and status
+    keep the same shape - footer.kicker is the message form's label and
+    footer.title the closing headline; status.kicker is the line printed under
+    the loading mark and status.empty_body the message shown when the content
+    request fails without one of its own.
+
+    The one exception:
+
+      trophy_wall.stat_badges    Labels under the two counters at the top of
+      trophy_wall.stat_platforms the Trophy Wall. They name specific counters,
+                                 so no shared key covers them.
+
+    Omitting a group, or a key inside one, is not an error. The front-end ships
+    the same wording as a default and falls back to it key by key, so a partial
+    strings block is valid and a missing one leaves the site reading exactly as
+    it does today.
 
 
 ================================================================================

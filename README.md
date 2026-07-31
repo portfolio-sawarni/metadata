@@ -5,8 +5,9 @@ inside the [json/](json/) folder. The script
 [validate_and_combine_json.py](validate_and_combine_json.py) validates those files
 and merges them into a single `main.json` that the front-end consumes.
 
-The portfolio's *colours* live separately in [theme.json](theme.json), which the
-front-end fetches as its own endpoint — see [Theme](#theme) below.
+The portfolio's *colours and fixed display copy* live separately in
+[theme.json](theme.json), which the front-end fetches as its own endpoint — see
+[Theme](#theme) below.
 
 ## Access Links
 
@@ -105,10 +106,11 @@ any working directory.
 
 ## Theme
 
-[theme.json](theme.json) holds every colour the site paints with. It is written
-by hand and served as-is — it is not part of the combine script, so editing it
-takes effect as soon as the file is published. Changing a hex here re-skins the
-front-end with no code change.
+[theme.json](theme.json) holds every colour the site paints with, plus the fixed
+display copy it prints. It is written by hand and served as-is — it is not part
+of the combine script, so editing it takes effect as soon as the file is
+published. Changing a hex here re-skins the front-end with no code change;
+changing a string re-voices it.
 
 | Field | What it colours |
 |---|---|
@@ -118,12 +120,57 @@ front-end with no code change.
 | `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains `domain_colors` doesn't name. |
 | `default_accent` | Accent for an achievement emblem rendered without a crest. |
 | `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
+| `strings` | Fixed display copy — section kickers, titles, intros and closing lines. See below. |
 
-Values are CSS colours; plain 6-digit hex is the convention, and 8-digit hex
-(`#rrggbbaa`) works where a baked-in alpha is wanted. Translucent shadows and
-glass fills are derived from `tokens` in the front-end, so they follow along
-without needing their own entries.
+Values in the colour fields are CSS colours; plain 6-digit hex is the
+convention, and 8-digit hex (`#rrggbbaa`) works where a baked-in alpha is
+wanted. Translucent shadows and glass fills are derived from `tokens` in the
+front-end, so they follow along without needing their own entries.
 
 Omitting a token is not an error: anything the document leaves out keeps the
 front-end's white placeholder, which is also what shows while the request is in
 flight.
+
+### Strings
+
+`strings` carries the wording that belongs to the *design* rather than to the
+portfolio's content: the numbered kickers (`02 — Experience`), the section and
+page titles, the paragraph under a title, and the one-line thought that closes a
+section. It is grouped by the section or route that renders it —
+`experience`, `projects`, `certificates`, `achievements`, `trophy_wall`,
+`beyond_work`, `articles`, `footer`, `status` — and every group draws from the
+same key vocabulary rather than naming its lines itself:
+
+| Key | Where it shows |
+|---|---|
+| `kicker` | The mono, uppercase line above the title, on the home page. |
+| `title` | The home page section heading. |
+| `detail_kicker` | The kicker on the route that section leads to. |
+| `detail_title` | The heading on that route. |
+| `detail_intro` | The paragraph directly under that heading. |
+| `detail_outro` | The closing line at the foot of that route. |
+| `empty_body` | Shown when there is nothing to render — a filter matching no rows, or content that failed to load. |
+
+A group carries only the keys it renders. `experience` and `projects` are a
+heading over a list on the home page, so alongside `kicker`/`title` they carry
+`detail_kicker` and `detail_outro` — the detail route takes its own heading from
+the job or project, and needs no framing paragraph. `trophy_wall` and
+`beyond_work` are routes of their own, so `kicker`/`title` belong to the home
+page CTA and the whole `detail_*` set to the page (the two kickers carry
+different section numbers, which is why they are separate keys). `certificates`
+adds `empty_body` for the filtered archive. `footer` and `status` follow the
+same shape: `footer.kicker` is the message form's label and `footer.title` the
+closing headline; `status.kicker` is the line under the loading mark and
+`status.empty_body` the message when the content fails to arrive.
+
+The one exception is `trophy_wall.stat_badges` / `trophy_wall.stat_platforms`,
+the labels under that page's two counters — they name specific counters, so
+there is no shared key for them.
+
+Anything not here stays in the front-end on purpose: button and link labels,
+form fields, accessible names, and the placeholder text that stands in for a
+blank content field. Names, blurbs, roles and write-ups all come from the
+content document instead.
+
+Omitting a string is not an error either — the front-end ships the same default
+wording and falls back to it per key, so a partial `strings` block is fine.
