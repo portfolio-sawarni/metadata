@@ -14,6 +14,13 @@ DEFAULT_IMAGE_PATH = "https://raw.githubusercontent.com/portfolio-sawarni/metada
 # single path (string) or a list of paths.
 IMAGE_KEYS = {"display_picture", "picture", "pictures"}
 
+# Keys holding document paths (PDFs and the like). Same handling as images:
+# relative paths get the metadata base URL prefixed.
+DOCUMENT_KEYS = {"resume"}
+
+# Every key whose value should be expanded into a full URL.
+ASSET_KEYS = IMAGE_KEYS | DOCUMENT_KEYS
+
 # Files whose records reference skills, and the field holding the skill ids.
 SKILL_SOURCES = {
     "experience.json": "skills",
@@ -208,8 +215,8 @@ def validate_experience_years(errors):
             )
 
 
-def _resolve_image_path(value):
-    """Prefix a relative image path with the metadata base URL.
+def _resolve_asset_path(value):
+    """Prefix a relative asset path with the metadata base URL.
 
     Absolute URLs (http/https) are kept as-is, and empty values stay empty.
     """
@@ -220,21 +227,21 @@ def _resolve_image_path(value):
     return DEFAULT_IMAGE_PATH + value.lstrip("/")
 
 
-def resolve_image_paths(data):
-    """Walk the combined data and expand every image path in IMAGE_KEYS."""
+def resolve_asset_paths(data):
+    """Walk the combined data and expand every asset path in ASSET_KEYS."""
     if isinstance(data, dict):
         resolved = {}
         for key, value in data.items():
-            if key in IMAGE_KEYS:
+            if key in ASSET_KEYS:
                 if isinstance(value, list):
-                    resolved[key] = [_resolve_image_path(item) for item in value]
+                    resolved[key] = [_resolve_asset_path(item) for item in value]
                 else:
-                    resolved[key] = _resolve_image_path(value)
+                    resolved[key] = _resolve_asset_path(value)
             else:
-                resolved[key] = resolve_image_paths(value)
+                resolved[key] = resolve_asset_paths(value)
         return resolved
     if isinstance(data, list):
-        return [resolve_image_paths(item) for item in data]
+        return [resolve_asset_paths(item) for item in data]
     return data
 
 
@@ -255,7 +262,7 @@ def combine(portfolio):
         else:
             combined[key] = value
 
-    combined = resolve_image_paths(combined)
+    combined = resolve_asset_paths(combined)
 
     with open(OUTPUT_PATH, "w", encoding="utf-8") as handle:
         json.dump(combined, handle, indent=4, ensure_ascii=False)
