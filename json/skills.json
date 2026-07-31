@@ -5,6 +5,7 @@
     {"unique_id": "pgsql", "name": "PgSQL", "type": "mainstream", "displayable": false},
     {"unique_id": "tailwind_css", "name": "Tailwind CSS", "type": "mainstream", "displayable": false},
     {"unique_id": "nest_js", "name": "Nest.JS", "type": "mainstream", "displayable": false},
+    {"unique_id": "ts", "name": "Typescript", "type": "mainstream", "displayable": false},
     {"unique_id": "react_js", "name": "React JS", "type": "mainstream", "displayable": false},
     {"unique_id": "python", "name": "Python", "type": "mainstream", "displayable": false},
     {"unique_id": "java", "name": "Java", "type": "mainstream", "displayable": false},
@@ -22,7 +23,7 @@
     {"unique_id": "fastapi", "name": "Fast API", "type": "mainstream", "displayable": false},
     {"unique_id": "vector_embedding", "name": "Vector Embedding", "type": "mainstream", "displayable": false},
     {"unique_id": "pydantic", "name": "Pydantic", "type": "mainstream", "displayable": false},
+    {"unique_id": "vector_database", "name": "Vector Database", "type": "mainstream", "displayable": false},
     {"unique_id": "git", "name": "Git", "type": "mainstream", "displayable": false},
-    {"unique_id": "streamlit", "name": "Streamlit", "type": "mainstream", "displayable": false},
-    {"unique_id": "ts", "name": "Typescript", "type": "mainstream", "displayable": false}
+    {"unique_id": "streamlit", "name": "Streamlit", "type": "mainstream", "displayable": false}
 ]
