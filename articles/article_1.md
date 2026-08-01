@@ -12,9 +12,15 @@ Scaffolding a project, writing yet another CRUD endpoint, translating a config f
 
 Learning an unfamiliar framework once meant hours of documentation archaeology. Now a developer can ask direct questions, get working examples, and understand *why* an API behaves the way it does. The barrier to trying something new has dropped dramatically.
 
+- Something
+- Something
+
 ## Better Code, Not Just Faster Code
 
 AI is a tireless reviewer. It spots the unhandled error path, suggests the missing test case, and explains an unfamiliar stack trace at 2 a.m. when no colleague is awake.
+
+1. Something
+2. Something
 
 ## The Developer Still Decides
 
