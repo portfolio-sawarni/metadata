@@ -19,5 +19,6 @@
 	"achievements": "achievements.json",
 	"certifications": "certifications.json",
 	"badges": "badges.json",
-	"hobbies": "hobbies.json"
+	"hobbies": "hobbies.json",
+	"articles": "articles.json"
 }

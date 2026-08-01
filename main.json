@@ -396,5 +396,14 @@
             ],
             "display_picture": ""
         }
+    ],
+    "articles": [
+        {
+            "id": 1,
+            "title": "AI a Boon or Bane?",
+            "kicker": "AI Engineering",
+            "date": "22/10/2026",
+            "content": "/articles/article_1.md"
+        }
     ]
 }
