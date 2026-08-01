@@ -67,6 +67,9 @@ achievement_crests
 certificate_crests
     Array of arrays. See DATA SECTIONS below.
 
+article_accents
+    Array of colours. See DATA SECTIONS below.
+
 strings
     Object of display copy, grouped by section. See STRINGS below.
 
@@ -286,6 +289,19 @@ certificate_crests
     free; to recolour one certificate, reorder that file - editing a ramp moves
     every certificate that lands on that position.
 
+article_accents
+    Type: array of colours.
+
+    The accent on each row of the writing index: the large ordinal, the kicker
+    above the title, the rule under the ordinal and the arrow at the end of the
+    row. Unlike skill_palette these are drawn as text and thin marks directly
+    on the page background, so they need to be dark enough to read there - a
+    colour tuned for white text on a filled chip washes out here.
+
+    Accents rotate by the order of articles.json, so a row keeps its colour
+    while the index is searched. The number of colours is free; omitting the
+    key falls back to skill_palette.
+
 
 ================================================================================
 STRINGS
@@ -339,7 +355,19 @@ strings
     itself and opens with no framing paragraph. trophy_wall and beyond_work
     are routes in their own right: title belongs to the home page CTA, the
     detail_* set to the page, and kicker is printed on both.
-    certificates adds empty_body for its filtered archive. footer and status
+    certificates adds empty_body for its filtered archive. articles is a route
+    of its own: kicker and title head the writing index, detail_intro is the
+    paragraph under them, and three keys cover the states where there is
+    nothing to print -
+
+      articles.empty_body         Shown when main.json carries no articles key,
+                                  and when a /article/<id> URL names an article
+                                  the index does not have.
+      articles.search_empty_body  Shown when the index search matches nothing.
+      articles.content_empty_body Shown when an article's content URL does not
+                                  answer, so there is no body to render.
+
+    footer and status
     keep the same shape - footer.kicker is the message form's label and
     footer.title the closing headline; status.kicker is the line printed under
     the loading mark and status.empty_body the message shown when the content

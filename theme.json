@@ -57,6 +57,14 @@
     "#d946ef",
     "#22c55e"
   ],
+  "article_accents": [
+    "#ef4444",
+    "#7e22ce",
+    "#c2410c",
+    "#1d4ed8",
+    "#0f766e",
+    "#15803d"
+  ],
   "domain_colors": {
     "ai_engineering": "#6366f1",
     "fe_development": "#14b8a6",
@@ -133,7 +141,11 @@
     },
     "articles": {
       "kicker": "Writing",
-      "title": "Articles"
+      "title": "Articles",
+      "detail_intro": "Notes from the middle of the work — the traces that changed my mind, and the fixes that turned out smaller than the plan.",
+      "empty_body": "No Articles Found",
+      "search_empty_body": "No article matches that search.",
+      "content_empty_body": "No Content Found"
     },
     "footer": {
       "kicker": "Send me a message",

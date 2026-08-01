@@ -403,7 +403,32 @@
             "title": "AI a Boon or Bane?",
             "kicker": "AI Engineering",
             "date": "22/10/2026",
-            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md"
+            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md",
+            "summary": "AI absorbs scaffolding, CRUD endpoints, config translation, freeing developers to spend their sharpest hours on architecture, correctness, and user experience."
+        },
+        {
+            "id": 2,
+            "title": "AI a Boon or Bane?",
+            "kicker": "AI Engineering",
+            "date": "22/10/2026",
+            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md",
+            "summary": "Learning an unfamiliar framework once meant hours of documentation archaeology. Now developers ask direct questions, receive working examples, and understand why an API behaves as it does, which has already dramatically lowered the barrier to picking up something entirely new."
+        },
+        {
+            "id": 3,
+            "title": "AI a Boon or Bane?",
+            "kicker": "AI Engineering",
+            "date": "22/10/2026",
+            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md",
+            "summary": "AI works as a tireless reviewer, spotting unhandled error paths, suggesting missing test cases, and explaining unfamiliar stack traces at two in the morning when no human colleague is awake."
+        },
+        {
+            "id": 4,
+            "title": "AI a Boon or Bane?",
+            "kicker": "AI Engineering",
+            "date": "22/10/2026",
+            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md",
+            "summary": "None of this replaces judgment. AI proposes solutions while the developer verifies, refines, and ultimately owns the result. Software development has always balanced thinking against typing, and AI quietly tilts that balance back toward thinking. The partnership of machine speed with human intent is what makes the craft faster, more deliberate, and more rewarding than it has ever been before."
         }
     ]
 }

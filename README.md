@@ -30,7 +30,9 @@ portfolio-metadata/
 │   ├── badges.json
 │   ├── achievements.json
 │   ├── hobbies.json
+│   ├── articles.json         # writing index; `content` points at a file below
 │   └── social_media.json
+├── articles/                 # article bodies as Markdown, one file each
 ├── validate_and_combine_json.py
 ├── main.json                 # generated output (do not edit by hand)
 └── theme.json                # colour system (edited by hand)
@@ -67,6 +69,10 @@ any validation fails, nothing is written and every issue is reported.
 6. **Experience years** — in `experience.json`, `startYear` must be a four-digit
    year (`YYYY`); `endYear` must be `YYYY` or the string `"Present"`; and when
    `endYear` is a concrete year it must not be earlier than `startYear`.
+7. **Article dates** — `date` in `articles.json` is `DD/MM/YYYY` and must be a
+   real calendar date.
+8. **Article ids** — every record in `articles.json` has an `id`, and no two
+   share one. The front-end routes `/article/<id>` by it.
 
 Reference fields are lenient: a single string, a list of strings, or an empty
 string/list are all accepted, and empty values are treated as "no reference".
@@ -121,6 +127,7 @@ changing a string re-voices it.
 | `default_accent` | Accent for an achievement emblem rendered without a crest. |
 | `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
 | `certificate_crests` | Certificate seal-disc gradients, each `[light, mid, deep]`, rotating by certification order. |
+| `article_accents` | Accents for the writing index — ordinal, kicker and arrow on each row — rotating by article order. Darker than `skill_palette`, since these are text on the page rather than white text on a chip. |
 | `strings` | Fixed display copy — section kickers, titles, intros and closing lines. See below. |
 
 Values in the colour fields are CSS colours; plain 6-digit hex is the
@@ -157,7 +164,14 @@ heading over a list on the home page, so alongside `kicker`/`title` they carry
 and needs no framing paragraph. `trophy_wall` and `beyond_work` are routes of
 their own, so `title` belongs to the home page CTA and the `detail_*` set to the
 page, with `kicker` printed on both. `certificates`
-adds `empty_body` for the filtered archive. `footer` and `status` follow the
+adds `empty_body` for the filtered archive. `articles` is a route of its own:
+`kicker`/`title` head the writing index and `detail_intro` is the paragraph
+under them, plus three keys for the states with nothing to print —
+`empty_body` when the content document carries no `articles` key (or a
+`/article/<id>` URL names one the index does not have),
+`search_empty_body` when the index search matches nothing, and
+`content_empty_body` when an article's `content` URL does not answer.
+`footer` and `status` follow the
 same shape: `footer.kicker` is the message form's label and `footer.title` the
 closing headline; `status.kicker` is the line under the loading mark and
 `status.empty_body` the message when the content fails to arrive.
