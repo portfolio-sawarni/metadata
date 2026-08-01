@@ -77,27 +77,27 @@
   ],
   "strings": {
     "experience": {
-      "kicker": "02 — Experience",
+      "kicker": "Experience",
       "title": "Where I've worked",
       "detail_outro": "Titles changed a few times. The habit of leaving things tidier than I found them didn't."
     },
     "projects": {
-      "kicker": "03 — Projects",
+      "kicker": "Projects",
       "title": "Selected work",
       "detail_outro": "It started as a weekend. It didn't stay one."
     },
     "certificates": {
-      "kicker": "04 — Certifications",
+      "kicker": "Certifications",
       "title": "Certificates",
       "detail_title": "All Certificates",
       "empty_body": "No certificate matches this domain and skill combination."
     },
     "achievements": {
-      "kicker": "05 — Achievements",
+      "kicker": "Achievements",
       "title": "Achievements"
     },
     "trophy_wall": {
-      "kicker": "06 — Bragging rights",
+      "kicker": "Bragging rights",
       "title": "The Trophy Wall",
       "detail_title": "The Trophy Wall",
       "detail_intro": "Badges, streaks and certificates mounted where I can see them. Every disc is one habit that stuck.",
@@ -106,14 +106,14 @@
       "stat_platforms": "Platforms"
     },
     "beyond_work": {
-      "kicker": "07 — Off the clock",
+      "kicker": "Off the clock",
       "title": "Beyond Work",
       "detail_title": "Beyond Work",
       "detail_intro": "The hours that don't show up on a résumé — notes held too long, boss fights fought too late.",
       "detail_outro": "Same person, different tempo."
     },
     "articles": {
-      "kicker": "08 — Writing",
+      "kicker": "Writing",
       "title": "Articles"
     },
     "footer": {
