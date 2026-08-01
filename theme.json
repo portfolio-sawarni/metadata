@@ -41,6 +41,7 @@
     "glass-2": "#eef0f6",
     "bezel-from": "#eaecf3",
     "bezel-to": "#f7f8fb",
+    "tooltip": "#000000",
     "marquee-shadow": "#2a131326"
   },
   "skill_palette": [

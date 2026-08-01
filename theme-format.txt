@@ -186,6 +186,13 @@ bezel-to
     trophy badge discs. Read as a pair; inverting them turns the ring from
     recessed to raised.
 
+tooltip
+    The fill of the hover label that names an icon-only control - the social
+    buttons in the hero, and anything else wrapped in the shared tooltip. Its
+    arrow and its drop shadow are both derived from this one value, and the
+    label's own text is drawn in "on-dark", so a light fill here needs that
+    token moved with it.
+
 select
     The text-selection highlight.
 
