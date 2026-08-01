@@ -1,6 +1,7 @@
 {
     "about": {
         "name": "Sawarni Swaroop",
+        "bot_name": "Sawarni",
         "display_picture": "",
         "description": "Full-stack developer with a serious AI habit. Converts coffee into clean code, half-baked ideas into shipped products, and \"that's impossible\" into a pull request.",
         "short_description": "",
@@ -13,11 +14,13 @@
     "social_media": [
         {
             "name": "LinkedIn",
-            "link": "https://www.linkedin.com/in/sawarni99"
+            "link": "https://www.linkedin.com/in/sawarni99",
+            "logo": ""
         },
         {
             "name": "Github",
-            "link": "https://github.com/sawarni99"
+            "link": "https://github.com/sawarni99",
+            "logo": ""
         }
     ],
     "skills": [
@@ -330,7 +333,7 @@
             "name": "Singing",
             "description": "When I'm not shipping code, I'm probably singing! 🎤 3 years into classical training and still chasing that perfect note. I also strum a **guitar** 🎸 — official enough to hold a **Grade 1 from Trinity College of Music, London**. Debugging by day, riyaz by night. 🎶",
             "pictures": [
-                "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/hobbies/trinity.JPG"
+                "https://img.magnific.com/free-photo/closeup-shot-beautiful-butterfly-with-interesting-textures-orange-petaled-flower_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
             ],
             "achievements": [
                 "Learned classical singing for 3 years.",

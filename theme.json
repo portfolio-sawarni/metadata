@@ -1,7 +1,19 @@
 {
-  "version": 2,
+  "version": 3,
   "name": "Default",
-  "description": "Every colour the portfolio front-end paints with, plus the fixed display copy it prints. Edit the hex values here to re-skin the site and the strings to re-voice it, without touching the code. Layout, spacing and shadow geometry stay in the front-end.",
+  "description": "Every colour the portfolio front-end paints with, the navbar it builds, the motion speeds it animates at, and the fixed display copy it prints. Edit the hex values here to re-skin the site and the strings to re-voice it, without touching the code. Typography, layout, spacing and shadow geometry stay in the front-end. Any string the front-end asks for that is missing here renders as `strings.common.no_data`.",
+  "navbar": {
+    "cta_label": "Get in touch",
+    "sections": [
+      { "id": "experience", "name": "Experience" },
+      { "id": "projects", "name": "Projects" },
+      { "id": "certificates", "name": "Certificates" },
+      { "id": "achievements", "name": "Achievements" },
+      { "id": "/articles", "name": "Articles" }
+    ]
+  },
+  "skills_marquee_speed": 1,
+  "domain_bounce_speed": 2.5,
   "tokens": {
     "bg": "#fbfbfa",
     "ink": "#14151a",
@@ -76,6 +88,9 @@
     ["#c4b5fd", "#7c3aed", "#4c1d95"]
   ],
   "strings": {
+    "common": {
+      "no_data": "No Data Found"
+    },
     "experience": {
       "kicker": "Experience",
       "title": "Where I've worked",
@@ -90,7 +105,8 @@
       "kicker": "Certifications",
       "title": "Certificates",
       "detail_title": "All Certificates",
-      "empty_body": "No certificate matches this domain and skill combination."
+      "empty_body": "No certificate matches this domain and skill combination.",
+      "verify_label": "View certificate ↗"
     },
     "achievements": {
       "kicker": "Achievements",
@@ -103,7 +119,8 @@
       "detail_intro": "Badges, streaks and certificates mounted where I can see them. Every disc is one habit that stuck.",
       "detail_outro": "Collect enough small wins and they start to look like a habit.",
       "stat_badges": "Badges earned",
-      "stat_platforms": "Platforms"
+      "stat_platforms": "Platforms",
+      "verify_label": "Verify badge ↗"
     },
     "beyond_work": {
       "kicker": "Off the clock",
@@ -119,6 +136,12 @@
     "footer": {
       "kicker": "Send me a message",
       "title": "Let's build something."
+    },
+    "chat": {
+      "input_placeholder": "Ask me anything",
+      "status_online": "online",
+      "status_offline": "offline",
+      "sleeping_body": "{name} is sleeping"
     },
     "status": {
       "kicker": "Loading portfolio…",
