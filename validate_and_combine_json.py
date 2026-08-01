@@ -13,7 +13,7 @@ DEFAULT_IMAGE_PATH = "https://raw.githubusercontent.com/portfolio-sawarni/metada
 
 # Keys anywhere in the combined output that hold image paths. Values may be a
 # single path (string) or a list of paths.
-IMAGE_KEYS = {"display_picture", "picture", "pictures"}
+IMAGE_KEYS = {"display_picture", "picture", "pictures", "logo"}
 
 # Keys holding document paths (PDFs and the like). Same handling as images:
 # relative paths get the metadata base URL prefixed.
