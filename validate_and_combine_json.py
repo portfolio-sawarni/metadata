@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from datetime import datetime
 
 # Directory containing all the individual JSON files.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,8 +19,12 @@ IMAGE_KEYS = {"display_picture", "picture", "pictures"}
 # relative paths get the metadata base URL prefixed.
 DOCUMENT_KEYS = {"resume"}
 
+# Keys holding article bodies (markdown files). Same handling as images:
+# relative paths get the metadata base URL prefixed.
+CONTENT_KEYS = {"content"}
+
 # Every key whose value should be expanded into a full URL.
-ASSET_KEYS = IMAGE_KEYS | DOCUMENT_KEYS
+ASSET_KEYS = IMAGE_KEYS | DOCUMENT_KEYS | CONTENT_KEYS
 
 # Files whose records reference skills, and the field holding the skill ids.
 SKILL_SOURCES = {
@@ -215,6 +220,69 @@ def validate_experience_years(errors):
             )
 
 
+def validate_article_dates(errors):
+    """``date`` in articles.json must be a real calendar date in DD/MM/YYYY."""
+    date_pattern = re.compile(r"^\d{2}/\d{2}/\d{4}$")
+
+    try:
+        records = _load_json("articles.json")
+    except (json.JSONDecodeError, OSError):
+        return  # Reported by validate_json_files.
+
+    if not isinstance(records, list):
+        errors.append("articles.json must be an array of objects.")
+        return
+
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            errors.append("articles.json[{}] is not an object.".format(index))
+            continue
+
+        date = record.get("date")
+        if not isinstance(date, str) or not date_pattern.match(date):
+            errors.append(
+                "articles.json[{}] has invalid date '{}' "
+                "(expected 'DD/MM/YYYY').".format(index, date)
+            )
+            continue
+
+        # The pattern only checks the shape; reject 31/02/2026 and friends too.
+        try:
+            datetime.strptime(date, "%d/%m/%Y")
+        except ValueError:
+            errors.append(
+                "articles.json[{}] has date '{}' which is not a real "
+                "calendar date.".format(index, date)
+            )
+
+
+def validate_article_ids(errors):
+    """Every article needs an id, and no two articles may share one."""
+    try:
+        records = _load_json("articles.json")
+    except (json.JSONDecodeError, OSError):
+        return  # Reported by validate_json_files.
+
+    if not isinstance(records, list):
+        return  # Reported by validate_article_dates.
+
+    seen = set()
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            continue  # Reported by validate_article_dates.
+
+        if "id" not in record:
+            errors.append("articles.json[{}] is missing an id.".format(index))
+            continue
+
+        article_id = record["id"]
+        if article_id in seen:
+            errors.append(
+                "articles.json[{}] repeats id '{}'.".format(index, article_id)
+            )
+        seen.add(article_id)
+
+
 def _resolve_asset_path(value):
     """Prefix a relative asset path with the metadata base URL.
 
@@ -288,6 +356,8 @@ def main():
     validate_skill_references(errors)
     validate_domain_references(errors)
     validate_experience_years(errors)
+    validate_article_dates(errors)
+    validate_article_ids(errors)
 
     if errors:
         print("Validation failed with {} issue(s):".format(len(errors)))

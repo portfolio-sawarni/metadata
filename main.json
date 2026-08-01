@@ -403,7 +403,7 @@
             "title": "AI a Boon or Bane?",
             "kicker": "AI Engineering",
             "date": "22/10/2026",
-            "content": "/articles/article_1.md"
+            "content": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/articles/article_1.md"
         }
     ]
 }
