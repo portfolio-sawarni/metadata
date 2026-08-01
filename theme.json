@@ -16,6 +16,8 @@
   "home_skills_limit": -1,
   "carousel_focus_dots": 3,
   "domain_bounce_speed": 2.5,
+  "certificates_preview_count": 3,
+  "dark_fade_ms": 500,
   "tokens": {
     "bg": "#fbfbfa",
     "ink": "#14151a",
@@ -100,24 +102,56 @@
   ],
   "strings": {
     "common": {
-      "no_data": "No Data Found"
+      "no_data": "No Data Found",
+      "back_label": "Back to portfolio",
+      "reset_label": "Reset",
+      "clear_label": "Clear",
+      "filter_label": "Filter",
+      "count_shown": "{count} shown",
+      "close_label": "Close",
+      "gallery_label": "Gallery",
+      "previous_label": "Previous",
+      "next_label": "Next"
+    },
+    "hero": {
+      "resume_label": "Download résumé"
     },
     "experience": {
       "kicker": "Experience",
       "title": "Where I've worked",
-      "detail_outro": "Titles changed a few times. The habit of leaving things tidier than I found them didn't."
+      "detail_outro": "Titles changed a few times. The habit of leaving things tidier than I found them didn't.",
+      "back_label": "Back to experience",
+      "card_cta": "Read the full story →"
     },
     "projects": {
       "kicker": "Projects",
       "title": "Selected work",
-      "detail_outro": "It started as a weekend. It didn't stay one."
+      "detail_outro": "It started as a weekend. It didn't stay one.",
+      "back_label": "Back to work",
+      "demo_label": "Live demo ↗",
+      "repo_label": "View repository ↗",
+      "previous_label": "Previous project",
+      "next_label": "Next project"
     },
     "certificates": {
       "kicker": "Certifications",
       "title": "Certificates",
       "detail_title": "All Certificates",
+      "empty_title": "No data found",
       "empty_body": "No certificate matches this domain and skill combination.",
-      "verify_label": "View certificate ↗"
+      "verify_label": "View certificate ↗",
+      "more_label": "Show more →",
+      "more_label_compact": "Show all certificates →",
+      "all_skills_label": "All skills",
+      "all_domains_label": "All domains",
+      "filter_skill_label": "Filter by skill",
+      "filter_domain_label": "Filter by domain",
+      "reset_label": "Reset filters",
+      "item_label": "Certificate",
+      "domain_label": "Domain",
+      "skills_label": "Skills",
+      "previous_label": "Previous certificate",
+      "next_label": "Next certificate"
     },
     "achievements": {
       "kicker": "Achievements",
@@ -131,36 +165,64 @@
       "detail_outro": "Collect enough small wins and they start to look like a habit.",
       "stat_badges": "Badges earned",
       "stat_platforms": "Platforms",
-      "verify_label": "Verify badge ↗"
+      "verify_label": "Verify badge ↗",
+      "all_platforms_label": "All",
+      "domain_label": "Domain"
     },
     "beyond_work": {
       "kicker": "Off the clock",
       "title": "Beyond Work",
       "detail_title": "Beyond Work",
       "detail_intro": "The hours that don't show up on a résumé — notes held too long, boss fights fought too late.",
-      "detail_outro": "Same person, different tempo."
+      "detail_outro": "Same person, different tempo.",
+      "highlights_label": "Highlights",
+      "previous_label": "Previous photo",
+      "next_label": "Next photo"
     },
     "articles": {
       "kicker": "Writing",
       "title": "Articles",
       "detail_intro": "Notes from the middle of the work — the traces that changed my mind, and the fixes that turned out smaller than the plan.",
       "empty_body": "No Articles Found",
+      "not_found_body": "No Such Article Found",
       "search_empty_body": "No article matches that search.",
-      "content_empty_body": "No Content Found"
+      "content_empty_body": "No Content Found",
+      "back_label": "Back to articles",
+      "search_placeholder": "Search articles",
+      "sort_label": "Sort by date",
+      "sort_newest_label": "Newest first",
+      "sort_oldest_label": "Oldest first",
+      "count_one": "{count} piece",
+      "count_many": "{count} pieces",
+      "card_cta": "Read →"
     },
     "footer": {
       "kicker": "Send me a message",
-      "title": "Let's build something."
+      "title": "Let's build something.",
+      "subject_placeholder": "Subject",
+      "message_label": "Message",
+      "message_placeholder": "Say hello, ask a question…",
+      "send_label": "Send email",
+      "empty_subject_body": "Add a subject first.",
+      "empty_message_body": "Write a message first.",
+      "sent_body": "Thanks! This form is a demo — nothing was sent yet."
     },
     "chat": {
       "input_placeholder": "Ask me anything",
       "status_online": "online",
       "status_offline": "offline",
-      "sleeping_body": "{name} is sleeping"
+      "sleeping_body": "{name} is sleeping",
+      "open_label": "Open chat",
+      "close_label": "Close chat",
+      "send_label": "Send message",
+      "message_label": "Message"
     },
     "status": {
       "kicker": "Loading portfolio…",
-      "empty_body": "The portfolio data could not be loaded."
+      "empty_body": "The portfolio data could not be loaded.",
+      "error_title": "Error",
+      "retry_label": "Try again",
+      "not_found_kicker": "404"
     }
   }
 }

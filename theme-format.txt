@@ -70,6 +70,18 @@ certificate_crests
 article_accents
     Array of colours. See DATA SECTIONS below.
 
+certificates_preview_count
+    Integer. How many certificates the home-page preview grid shows before it
+    defers to the archive route. -1 shows the whole set, which also drops the
+    "show more" link - there would be nothing behind it. Missing or invalid
+    falls back to 3.
+
+dark_fade_ms
+    Integer. How long the Beyond Work route spends crossfading between the light
+    and dark surfaces, in milliseconds, in each direction. The route defers its
+    navigation by the same amount, so the light theme is back before the next
+    page renders. Missing or invalid falls back to 500.
+
 strings
     Object of display copy, grouped by section. See STRINGS below.
 
@@ -318,16 +330,37 @@ strings
     Type: object of objects. Each inner object is one section or route, and its
     keys are the individual lines that section prints.
 
-    What belongs here is copy that is part of the design rather than part of
+    What belongs here is every word the site prints that is not part of
     anyone's portfolio: the numbered kicker above a heading, the heading itself,
-    the paragraph under it, and the single line that closes the section. Names,
-    blurbs, roles, project write-ups and hobby descriptions are content and come
-    from main.json instead. Button and link labels, form fields and accessible
-    names stay in the front-end, because changing their wording is a change to
-    what the control does, not to how the page reads.
+    the paragraph under it, the line that closes the section - and equally the
+    button and link labels, the form fields, the filter and empty-state wording,
+    and the accessible names on the controls. Names, blurbs, roles, project
+    write-ups and hobby descriptions are content and come from main.json
+    instead.
+
+    The front-end ships no wording of its own. Anything this file does not name
+    renders as strings.common.no_data, which makes the gap visible in the UI
+    rather than papering over it with a default that only exists in the bundle.
+
+    Some wording is shared by several surfaces - the way back, a reset control,
+    a count. Those live once under common, and a group may override the same key
+    to say something more specific: common.back_label reads "Back to portfolio"
+    everywhere, while projects.back_label reads "Back to work" on that one
+    route. A group that names no override inherits common's.
+
+    A string may carry {placeholders}, which the front-end fills with values it
+    supplies. This keeps the sentence in the theme rather than assuming a word
+    order in the code:
+
+      chat.sleeping_body      {name}  - the assistant's display name
+      common.count_shown      {count} - how many rows survive a filter
+      articles.count_one      {count} - the writing index's result count,
+      articles.count_many               singular and plural
 
     Groups:
 
+      common          wording shared by more than one surface, plus no_data
+      hero            the hero's resume CTA
       experience      02 - the timeline section, and the kicker on a company's
                       detail route
       projects        03 - the project rail, and the kicker on a project's
@@ -338,8 +371,9 @@ strings
       trophy_wall     the Trophy Wall route and the CTA that leads to it
       beyond_work     the Beyond Work route and the CTA that leads to it
       articles        08 - the writing index
-      footer          the closing headline and the message form's label
-      status          the loading and error screens
+      footer          the closing headline and the whole message form
+      chat            the assistant panel's chrome
+      status          the loading, error and not-found screens
 
     Keys. Every group draws from one vocabulary rather than naming its own
     lines: kicker and title are what the home page prints, and the detail_*
@@ -368,8 +402,11 @@ strings
     nothing to print -
 
       articles.empty_body         Shown when main.json carries no articles key,
-                                  and when a /article/<id> URL names an article
-                                  the index does not have.
+                                  so the index has nothing to list.
+      articles.not_found_body     Shown when a /article/<id> URL names an
+                                  article the index does not have. A different
+                                  situation from an empty index, so it gets its
+                                  own line.
       articles.search_empty_body  Shown when the index search matches nothing.
       articles.content_empty_body Shown when an article's content URL does not
                                   answer, so there is no body to render.
@@ -386,10 +423,10 @@ strings
       trophy_wall.stat_platforms the Trophy Wall. They name specific counters,
                                  so no shared key covers them.
 
-    Omitting a group, or a key inside one, is not an error. The front-end ships
-    the same wording as a default and falls back to it key by key, so a partial
-    strings block is valid and a missing one leaves the site reading exactly as
-    it does today.
+    Omitting a group, or a key inside one, is not an error, but it is visible:
+    the front-end carries no default wording, so a missing string renders as
+    strings.common.no_data. A group key that common also declares falls back to
+    common's before it falls back to no_data.
 
 
 ================================================================================
