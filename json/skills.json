@@ -25,5 +25,6 @@
     {"unique_id": "html", "name": "HTML", "type": "mainstream", "displayable": false},
     {"unique_id": "css", "name": "CSS", "type": "mainstream", "displayable": false},
     {"unique_id": "prompt_engineering", "name": "Prompt Engineering", "type": "mainstream", "displayable": false},
-    {"unique_id": "ml", "name": "Machine Learning", "type": "mainstream", "displayable": false}
+    {"unique_id": "ml", "name": "Machine Learning", "type": "mainstream", "displayable": false},
+    {"unique_id": "dsa", "name": "Data Structure and Algorithms", "type": "mainstream", "displayable": false}
 ]

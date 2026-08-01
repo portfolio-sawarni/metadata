@@ -1,11 +1,11 @@
 [
     {
-        "name": "",
-        "display_picture": "",
-        "platform": "",
-        "link": "",
-        "domain": "",
-        "skills": [],
-        "description": ""
+        "name": "Problem Solving",
+        "display_picture": "/assets/badges/hackerrank_problem_solving.png",
+        "platform": "Hackerrank",
+        "link": "https://www.hackerrank.com/profile/sawarni99",
+        "domain": "be_development",
+        "skills": ["dsa"],
+        "description": "Earned 6-star HackerRank Problem Solving badge showcasing strong algorithmic skills."
     }
 ]
