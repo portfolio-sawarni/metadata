@@ -27,5 +27,10 @@
     {"unique_id": "prompt_engineering", "name": "Prompt Engineering", "type": "mainstream", "displayable": false},
     {"unique_id": "ml", "name": "Machine Learning", "type": "mainstream", "displayable": false},
     {"unique_id": "dsa", "name": "Data Structure and Algorithms", "type": "mainstream", "displayable": false},
-    {"unique_id": "kafka", "name": "Kafka", "type": "mainstream", "displayable": true}
+    {"unique_id": "kafka", "name": "Kafka", "type": "mainstream", "displayable": true},
+    {"unique_id": "agentic_ai", "name": "Agentic AI", "type": "mainstream", "displayable": false},
+    {"unique_id": "blockchain", "name": "Blockchain", "type": "mainstream", "displayable": false},
+    {"unique_id": "xss", "name": "XSS", "type": "mainstream", "displayable": false},
+    {"unique_id": "sqli", "name": "SQL Injection", "type": "mainstream", "displayable": false},
+    {"unique_id": "linux", "name": "Linux", "type": "mainstream", "displayable": false}
 ]

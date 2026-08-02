@@ -2,5 +2,7 @@
     {"unique_id": "ai_engineering", "name": "AI Engineering", "displayable": true},
     {"unique_id": "fe_development", "name": "Frontend Development", "displayable": true},
     {"unique_id": "be_development", "name": "Backend Development", "displayable": true},
-    {"unique_id": "cyber_security", "name": "Cyber Security", "displayable": true}
+    {"unique_id": "cyber_security", "name": "Cyber Security", "displayable": true},
+    {"unique_id": "fullstack_development", "name": "Fullstack Development", "displayable": false},
+    {"unique_id": "blockchain", "name": "Blockchain Development", "displayable": false}
 ]

@@ -197,6 +197,36 @@
             "name": "Kafka",
             "type": "mainstream",
             "displayable": true
+        },
+        {
+            "unique_id": "agentic_ai",
+            "name": "Agentic AI",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "blockchain",
+            "name": "Blockchain",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "xss",
+            "name": "XSS",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "sqli",
+            "name": "SQL Injection",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "linux",
+            "name": "Linux",
+            "type": "mainstream",
+            "displayable": false
         }
     ],
     "domains": [
@@ -219,6 +249,16 @@
             "unique_id": "cyber_security",
             "name": "Cyber Security",
             "displayable": true
+        },
+        {
+            "unique_id": "fullstack_development",
+            "name": "Fullstack Development",
+            "displayable": false
+        },
+        {
+            "unique_id": "blockchain",
+            "name": "Blockchain Development",
+            "displayable": false
         }
     ],
     "projects": [
@@ -320,6 +360,151 @@
                 "llm",
                 "vector_embedding",
                 "vector_database"
+            ]
+        },
+        {
+            "title": "Calculus for Machine Learning and Data Science",
+            "issuer": "DeepLearning.AI",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/calculus_for_ml.png",
+            "link": "https://www.coursera.org/account/accomplishments/verify/9FH96BE8V87U",
+            "description": "Completed Calculus for Machine Learning and Data Science offered by DeepLearning.AI. Learned key calculus concepts, including derivatives, partial derivatives, and gradients, along with their application in optimization algorithms like gradient descent. Gained a strong mathematical foundation for understanding how machine learning models are trained, enabling deeper insight into the mechanics behind AI and data science techniques.",
+            "short_description": "Completed Calculus for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering derivatives, gradients, and optimization techniques essential for understanding and building machine learning algorithms.",
+            "domain": "ai_engineering",
+            "skills": [
+                "ml"
+            ]
+        },
+        {
+            "title": "Linear Algebra for Machine Learning and Data Science",
+            "issuer": "DeepLearning.AI",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/linear_algebra_for_ml.png",
+            "link": "https://www.coursera.org/account/accomplishments/verify/7RAH8R8YJBP3",
+            "description": "Completed Linear Algebra for Machine Learning and Data Science offered by DeepLearning.AI. Learned foundational concepts including vectors, matrices, linear transformations, eigenvalues, and eigenvectors, along with their role in machine learning algorithms. Explored practical applications such as dimensionality reduction and principal component analysis (PCA). Gained a strong mathematical foundation essential for understanding how ML models process and transform data.",
+            "short_description": "Completed Linear Algebra for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering vectors, matrices, eigenvalues, and their applications in machine learning algorithms and data transformations.",
+            "domain": "ai_engineering",
+            "skills": [
+                "ml"
+            ]
+        },
+        {
+            "title": "AI Engineer Core Track: LLM Engineering, RAG, QLoRA, Agents",
+            "issuer": "Udemy",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/ai_engineer_core_track.png",
+            "link": "https://www.udemy.com/certificate/UC-1e31d05f-a8a5-4fe5-b738-cbdb4b347165/",
+            "description": "Completed course by Ed Donner on Udemy. Gained hands-on experience building LLM-powered applications, designing Retrieval-Augmented Generation (RAG) pipelines, fine-tuning open-source models efficiently using QLoRA, and developing autonomous AI agents. Strengthened practical understanding of end-to-end generative AI system design, from prompt engineering to deploying production-ready, agentic workflows.",
+            "short_description": "Completed Ed Donner's AI Engineer Core Track on Udemy — covering LLM engineering fundamentals, Retrieval-Augmented Generation (RAG), efficient fine-tuning with QLoRA, and building autonomous AI agents for real-world generative AI applications.",
+            "domain": "ai_engineering",
+            "skills": [
+                "llm",
+                "vector_embedding",
+                "rag",
+                "agentic_ai",
+                "sft"
+            ]
+        },
+        {
+            "title": "Programming with JavaScript",
+            "issuer": "Meta",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/programming_with_js.png",
+            "link": "https://www.coursera.org/account/accomplishments/verify/YM9U8DN51O1V",
+            "description": "Completed Programming with JavaScript offered by Meta. Learned core JavaScript programming concepts, including data types, variables, control structures, functions, and DOM manipulation. Built practical skills in debugging, writing clean code, and problem-solving through hands-on projects. Gained a solid foundation in front-end web development fundamentals, preparing for further study in frameworks like React.",
+            "short_description": "Completed Programming with JavaScript by Meta on Coursera — covering core JavaScript fundamentals, including variables, functions, loops, DOM manipulation, and problem-solving through hands-on coding exercises and projects.",
+            "domain": "fullstack_development",
+            "skills": [
+                "js"
+            ]
+        },
+        {
+            "title": "JavaScript (Intermediate) Certificate",
+            "issuer": "HackerRank",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/js_intermediate.png",
+            "link": "https://www.hackerrank.com/certificates/a68111f2b050",
+            "description": "Earned the JavaScript (Intermediate) Certificate from HackerRank by successfully completing a proctored skills assessment. Demonstrated solid understanding of core JavaScript concepts, including functions, objects, arrays, closures, prototypes, and asynchronous programming (promises, callbacks). Validated practical coding skills through timed challenges, showcasing readiness for real-world front-end and back-end JavaScript development tasks in professional software engineering roles.",
+            "short_description": "Earned the JavaScript (Intermediate) Certificate from HackerRank — validating strong proficiency in core JavaScript concepts, including functions, objects, closures, and asynchronous programming through a proctored skills assessment.",
+            "domain": "fullstack_development",
+            "skills": [
+                "js"
+            ]
+        },
+        {
+            "title": "Problem Solving (Intermediate) Certificate",
+            "issuer": "HackerRank",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/problem_solving_intermediate.png",
+            "link": "https://www.hackerrank.com/certificates/6e81fc76d2f6",
+            "description": "Earned the Problem Solving (Intermediate) Certificate from HackerRank by successfully completing a proctored skills assessment. Demonstrated strong command of core data structures, algorithms, and logical reasoning through timed coding challenges. Validated the ability to analyze problems, design efficient solutions, and implement optimized code — skills directly applicable to technical interviews and real-world software development tasks.",
+            "short_description": "Earned the Problem Solving (Intermediate) Certificate from HackerRank — demonstrating proficiency in data structures, algorithms, and logical problem-solving through a proctored coding assessment covering intermediate-level challenges.",
+            "domain": "fullstack_development",
+            "skills": [
+                "java",
+                "js",
+                "python"
+            ]
+        },
+        {
+            "title": "Software Engineer Certificate",
+            "issuer": "HackerRank",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/software_engineer.png",
+            "link": "https://www.hackerrank.com/certificates/333025591229",
+            "description": "Earned the Software Engineer Certificate from HackerRank by successfully completing a comprehensive proctored skills assessment. Demonstrated strong command of core software engineering competencies, including data structures, algorithms, problem-solving, and coding proficiency across multiple domains. Validated the ability to write efficient, well-structured code and apply computer science fundamentals to real-world software development challenges and technical interview scenarios.",
+            "short_description": "Earned the Software Engineer Certificate from HackerRank — validating core software engineering competencies, including problem-solving, data structures, algorithms, and coding proficiency through a comprehensive proctored assessment.",
+            "domain": "fullstack_development",
+            "skills": [
+                "java",
+                "js",
+                "python"
+            ]
+        },
+        {
+            "title": "Frontend Developer (React) Certificate",
+            "issuer": "HackerRank",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/fe_developer_react.png",
+            "link": "https://www.hackerrank.com/certificates/4031cb190780",
+            "description": "Earned the Frontend Developer (React) Certificate from HackerRank by successfully completing a proctored skills assessment. Demonstrated proficiency in React fundamentals, including component architecture, state and props management, hooks, event handling, and rendering logic. Validated practical ability to build interactive, responsive user interfaces, confirming readiness for real-world front-end development roles using modern React-based workflows.",
+            "short_description": "Earned the Frontend Developer (React) Certificate from HackerRank — validating skills in building React components, managing state, handling props, and implementing core front-end development concepts through a proctored assessment.",
+            "domain": "fe_development",
+            "skills": [
+                "react_js"
+            ]
+        },
+        {
+            "title": "Introduction to Front-End Development",
+            "issuer": "Meta",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/into_to_fe.png",
+            "link": "https://www.coursera.org/account/accomplishments/verify/U3R0AIQDF0EM",
+            "description": "Completed Introduction to Front-End Development offered by Meta. Learned foundational web development concepts, including HTML, CSS, and JavaScript basics, along with core UI/UX design principles. Explored the front-end developer role, industry tools, and modern web development practices. Built a solid understanding of how front-end components come together to create responsive, user-friendly websites and applications.",
+            "short_description": "Completed Introduction to Front-End Development by Meta on Coursera — covering HTML, CSS, JavaScript basics, UI/UX design principles, and the role and responsibilities of a front-end developer.",
+            "domain": "fe_development",
+            "skills": [
+                "react_js",
+                "html",
+                "css",
+                "js"
+            ]
+        },
+        {
+            "title": "Learn Cybersecurity From Scratch",
+            "issuer": "ZSecurity",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/cyber_from_scratch.png",
+            "link": "https://zsecurity.org/certification/validation/?cert_number=0rEAzxyO",
+            "description": "Completed \"Learn Cybersecurity From Scratch\" by Zaid Sabih & Maitham on zSecurity. Built hands-on skills across networking fundamentals, Windows security, Kali Linux, cryptography, and identity/access management. Explored threat detection, SIEM/SOAR tools like Wazuh, phishing defense, web application vulnerabilities (XSS, SQL injection), vulnerability management with Nessus, and AI applications in cybersecurity, gaining practical, enterprise-relevant security skills.",
+            "short_description": "Completed \"Learn Cybersecurity From Scratch\" by zSecurity — covering networking, Windows security, Linux, cryptography, SIEM/SOAR, threat detection, web application security, vulnerability management, and AI in cybersecurity.",
+            "domain": "cyber_security",
+            "skills": [
+                "xss",
+                "sqli",
+                "linux"
+            ]
+        },
+        {
+            "title": "Blockchain Basics",
+            "issuer": "The State University of New York",
+            "picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/certificates/blockchain_basic.png",
+            "link": "https://www.coursera.org/account/accomplishments/verify/CNXSH36U9T7H",
+            "description": "Completed Blockchain Basics offered by the State University of New York on Coursera. Learned core blockchain concepts, including hash functions, distributed ledger technology, and consensus mechanisms like Proof of Work. Explored how blockchain enables secure, decentralized transactions, with a focus on Bitcoin's underlying architecture. Gained a foundational understanding of blockchain's real-world applications beyond cryptocurrency.",
+            "short_description": "Completed Blockchain Basics by the State University of New York on Coursera — covering blockchain fundamentals, cryptographic hashing, distributed ledgers, consensus mechanisms, and the technology behind cryptocurrencies like Bitcoin.",
+            "domain": "blockchain",
+            "skills": [
+                "blockchain"
             ]
         }
     ],
