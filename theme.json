@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 1,
   "name": "Default",
   "description": "Every colour the portfolio front-end paints with, the navbar it builds, the motion speeds it animates at, how many skill chips a home-page card shows, how many carousel dots stay at full opacity, and the fixed display copy it prints. Edit the hex values here to re-skin the site and the strings to re-voice it, without touching the code. Typography, layout, spacing and shadow geometry stay in the front-end. Any string the front-end asks for that is missing here renders as `strings.common.no_data`.",
   "navbar": {
