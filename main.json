@@ -511,14 +511,60 @@
     "badges": [
         {
             "name": "Problem Solving",
-            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hackerrank_problem_solving.png",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hr_problem_solving.png",
             "platform": "Hackerrank",
             "link": "https://www.hackerrank.com/profile/sawarni99",
-            "domain": "be_development",
+            "domain": "fullstack_development",
             "skills": [
                 "dsa"
             ],
             "description": "Earned 6-star HackerRank Problem Solving badge showcasing strong algorithmic skills."
+        },
+        {
+            "name": "30 Days of Code",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hr_30_day_code.png",
+            "platform": "Hackerrank",
+            "link": "https://www.hackerrank.com/profile/sawarni99",
+            "domain": "fullstack_development",
+            "skills": [
+                "dsa"
+            ],
+            "description": "Earned 4-star HackerRank 30 Days of Code badge for consistent daily coding practice."
+        },
+        {
+            "name": "Java",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hr_java.png",
+            "platform": "Hackerrank",
+            "link": "https://www.hackerrank.com/profile/sawarni99",
+            "domain": "fullstack_development",
+            "skills": [
+                "java",
+                "dsa"
+            ],
+            "description": "Earned 3-star HackerRank Java badge demonstrating solid object-oriented programming skills."
+        },
+        {
+            "name": "Python",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hr_python.png",
+            "platform": "Hackerrank",
+            "link": "https://www.hackerrank.com/profile/sawarni99",
+            "domain": "fullstack_development",
+            "skills": [
+                "python",
+                "dsa"
+            ],
+            "description": "Earned 2-star HackerRank Python badge covering core language and problem solving concepts."
+        },
+        {
+            "name": "SQL",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/hr_sql.png",
+            "platform": "Hackerrank",
+            "link": "https://www.hackerrank.com/profile/sawarni99",
+            "domain": "be_development",
+            "skills": [
+                "pgsql"
+            ],
+            "description": "Earned HackerRank SQL badge covering querying, joins and aggregation fundamentals."
         }
     ],
     "hobbies": [
