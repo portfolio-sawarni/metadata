@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Acoustic guitar">
+  <title>Acoustic guitar</title>
+  <defs>
+    <radialGradient id="g-bg" cx="36%" cy="26%" r="88%">
+      <stop offset="0" stop-color="#1e2130"/>
+      <stop offset="62%" stop-color="#101219"/>
+      <stop offset="1" stop-color="#0b0c0f"/>
+    </radialGradient>
+    <radialGradient id="g-glow-a" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#6366f1" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-glow-b" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="g-line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c7d2fe"/>
+      <stop offset="48%" stop-color="#818cf8"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="g-body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".13"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity=".05"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".02"/>
+    </linearGradient>
+    <linearGradient id="g-neck" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#g-bg)"/>
+  <circle cx="150" cy="132" r="210" fill="url(#g-glow-a)"/>
+  <circle cx="392" cy="404" r="196" fill="url(#g-glow-b)"/>
+
+  <g transform="translate(256 256) rotate(-20) scale(1.2) translate(0 78.5)"
+     fill="none" stroke="url(#g-line)" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- body -->
+    <path d="M0 108C48 108 84 84 84 48C84 16 40 14 40-14C40-44 66-48 66-74C66-96 40-110 0-110C-40-110-66-96-66-74C-66-48-40-44-40-14C-40 14-84 16-84 48C-84 84-48 108 0 108Z"
+          fill="url(#g-body)" stroke-width="4"/>
+    <!-- binding -->
+    <path d="M0 99C43 99 75 77 75 46C75 18 34 15 34-14C34-40 58-45 58-72C58-91 35-101 0-101C-35-101-58-91-58-72C-58-45-34-40-34-14C-34 15-75 18-75 46C-75 77-43 99 0 99Z"
+          stroke="#ffffff" stroke-opacity=".13" stroke-width="2.2"/>
+
+    <!-- sound hole + rosette -->
+    <circle cx="0" cy="-30" r="27" fill="#0b0c0f" fill-opacity=".85" stroke-width="3.5"/>
+    <circle cx="0" cy="-30" r="34" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+
+    <!-- bridge -->
+    <rect x="-30" y="28" width="60" height="14" rx="6" fill="#ffffff" fill-opacity=".08" stroke-width="3"/>
+    <path d="M-23 25h46" stroke="#ffffff" stroke-opacity=".35" stroke-width="2.5"/>
+
+    <!-- neck + fretboard -->
+    <path d="M-15-108h30l-2 105h-26Z" fill="url(#g-neck)" stroke-width="3.5"/>
+    <path d="M-13-125h26M-12.6-142h25.2M-12.2-158h24.4M-11.8-172h23.6M-11.4-185h22.8M-11-196h22"
+          stroke="#ffffff" stroke-opacity=".26" stroke-width="2"/>
+    <!-- nut -->
+    <path d="M-13.5-213h27" stroke="#ffffff" stroke-opacity=".5" stroke-width="3.5"/>
+
+    <!-- headstock -->
+    <path d="M-14-213c-6 0-9-4-9-9v-30c0-8 5-13 12-13h22c7 0 12 5 12 13v30c0 5-3 9-9 9Z"
+          fill="url(#g-body)" stroke-width="3.5"/>
+    <g stroke="#ffffff" stroke-opacity=".38" stroke-width="2.5">
+      <path d="M-23-228h-9M-23-241h-9M-23-252h-9M23-228h9M23-241h9M23-252h9"/>
+    </g>
+    <g fill="#ffffff" fill-opacity=".3">
+      <circle cx="-35" cy="-228" r="3.4"/><circle cx="-35" cy="-241" r="3.4"/><circle cx="-35" cy="-252" r="3.4"/>
+      <circle cx="35" cy="-228" r="3.4"/><circle cx="35" cy="-241" r="3.4"/><circle cx="35" cy="-252" r="3.4"/>
+    </g>
+
+    <!-- strings -->
+    <g stroke="#ffffff" stroke-opacity=".42" stroke-width="1.4">
+      <path d="M-11 32L-8-213"/>
+      <path d="M-6.6 32L-4.8-213"/>
+      <path d="M-2.2 32L-1.6-213"/>
+      <path d="M2.2 32L1.6-213"/>
+      <path d="M6.6 32L4.8-213"/>
+      <path d="M11 32L8-213"/>
+    </g>
+  </g>
+</svg>
