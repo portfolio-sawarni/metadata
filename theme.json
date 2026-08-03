@@ -18,7 +18,7 @@
   "domain_bounce_speed": 2.5,
   "certificates_preview_count": 3,
   "dark_fade_ms": 500,
-  "hero_portrait_opacity": 0.8,
+  "hero_portrait_opacity": 0.889,
   "tokens": {
     "bg": "#fbfbfa",
     "ink": "#14151a",
