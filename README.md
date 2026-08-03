@@ -1,13 +1,17 @@
 # Portfolio Metadata
 
-The portfolio's content lives as a set of small, individually editable JSON files
-inside the [json/](json/) folder. The script
-[validate_and_combine_json.py](validate_and_combine_json.py) validates those files
-and merges them into a single `main.json` that the front-end consumes.
+This repository is the portfolio's content store. It holds three things:
 
-The portfolio's *colours and fixed display copy* live separately in
-[theme.json](theme.json), which the front-end fetches as its own endpoint — see
-[Theme](#theme) below.
+- the **content** — small, individually editable JSON files in [json/](json/),
+  merged by a script into a single `main.json`,
+- the **assets** those files point at — images, documents and article bodies in
+  [assets/](assets/) and [articles/](articles/),
+- the **theme** — [theme.json](theme.json), the colour system, a handful of
+  display tunables, and the site's fixed display copy.
+
+`main.json` and `theme.json` are served straight from the repository over raw
+GitHub URLs and fetched by the site at startup. Nothing here is built or
+deployed; publishing a change means committing it.
 
 ## Access Links
 
@@ -30,12 +34,16 @@ portfolio-metadata/
 │   ├── badges.json
 │   ├── achievements.json
 │   ├── hobbies.json
-│   ├── articles.json         # writing index; `content` points at a file below
 │   └── social_media.json
+├── assets/
+│   ├── images/               # badges, certificates, dp, hobbies, project shots,
+│   │                         #   social media logos — one folder per kind
+│   └── resume/               # PDFs
 ├── articles/                 # article bodies as Markdown, one file each
 ├── validate_and_combine_json.py
 ├── main.json                 # generated output (do not edit by hand)
-└── theme.json                # colour system (edited by hand)
+├── theme.json                # colour system + display copy (edited by hand)
+└── theme-format.txt          # field-by-field reference for theme.json
 ```
 
 ### `portfolio.json`
@@ -47,10 +55,39 @@ either:
 - a **nested object** whose string `.json` values are likewise inlined, or
 - a **literal value** (string/object) that is copied through as-is.
 
+The `about` and `contact` blocks are the literal case: they are written inline in
+`portfolio.json` rather than living in files of their own.
+
+### Assets
+
+Asset paths are written relative to the repository root — for example
+`/assets/images/dp/sawarni_5.png` — and the script expands them into full raw
+GitHub URLs on the way into `main.json`. Values that are already absolute
+(`http://`, `https://`) are left alone, and empty values stay empty.
+
+The keys treated as asset paths are:
+
+| Kind | Keys |
+|---|---|
+| Images | `display_picture`, `picture`, `pictures`, `logo` |
+| Documents | `resume` |
+| Article bodies | `content` |
+
+Each may hold a single path or a list of paths.
+
+### Articles
+
+The writing index is optional. When present it is `json/articles.json`, wired
+into `portfolio.json` like any other section, with each record carrying an `id`,
+a `date` and a `content` path pointing at a Markdown file in [articles/](articles/).
+There are no articles at the moment, and the script simply skips the
+article validations when the file is absent.
+
 ## What the script does
 
-Running the script performs two phases: **validation**, then **combination**. If
-any validation fails, nothing is written and every issue is reported.
+[validate_and_combine_json.py](validate_and_combine_json.py) performs two
+phases: **validation**, then **combination**. If any validation fails, nothing is
+written and every issue is reported.
 
 ### Validations
 
@@ -72,17 +109,20 @@ any validation fails, nothing is written and every issue is reported.
 7. **Article dates** — `date` in `articles.json` is `DD/MM/YYYY` and must be a
    real calendar date.
 8. **Article ids** — every record in `articles.json` has an `id`, and no two
-   share one. The front-end routes `/article/<id>` by it.
+   share one. The site routes `/article/<id>` by it.
 
 Reference fields are lenient: a single string, a list of strings, or an empty
 string/list are all accepted, and empty values are treated as "no reference".
 
+Asset paths are not validated — a path that names a missing file passes, and
+surfaces as a broken image on the page instead.
+
 ### Combination
 
 When all validations pass, the script walks `portfolio.json`, inlines every
-referenced `.json` file (top-level and one level of nesting), and writes the
-merged result to `main.json` next to the script (indented, UTF-8, non-ASCII
-preserved).
+referenced `.json` file (top-level and one level of nesting), expands the asset
+paths described above, and writes the merged result to `main.json` next to the
+script (indented, UTF-8, non-ASCII preserved).
 
 ## How to run
 
@@ -112,42 +152,49 @@ any working directory.
 
 ## Theme
 
-[theme.json](theme.json) holds every colour the site paints with, plus the fixed
-display copy it prints. It is written by hand and served as-is — it is not part
-of the combine script, so editing it takes effect as soon as the file is
-published. Changing a hex here re-skins the front-end with no code change;
+[theme.json](theme.json) holds every colour the site paints with, a small set of
+display tunables, and the fixed copy it prints. It is written by hand and served
+as-is — it is not part of the combine script, so an edit takes effect as soon as
+the file is published. Changing a hex here re-skins the site with no code change;
 changing a string re-voices it.
 
-| Field | What it colours |
+[theme-format.txt](theme-format.txt) is the field-by-field reference; the table
+below is the map.
+
+| Field | What it controls |
 |---|---|
-| `tokens` | Named colours mirrored into CSS custom properties (`--color-<key>`): text (`ink`, `ink-2`…`ink-4`), backgrounds (`bg`, `dark-bg`, `surface`…), and accents (`accent`, `teal`, `rose`…). |
+| `version`, `name`, `description` | Schema version and human labels. Not rendered. |
+| `navbar` | The nav's `cta_label` and its `sections` list — each an `id` (a home-page anchor, or a `/route`) and a display `name`. |
+| `tokens` | Named colours mirrored into CSS custom properties (`--color-<key>`, plus a `-rgb` companion for translucent tints): text (`ink`, `ink-2`…`ink-4`), backgrounds (`bg`, `dark-bg`, `surface`…), and accents (`accent`, `teal`, `rose`…). |
 | `skill_palette` | The rotating chip palette. Skills take a colour by their declared position in `skills.json`, so order — not this list — decides which skill gets which colour. |
 | `domain_colors` | Fixed domain colours keyed by `unique_id` from `domains.json`. |
 | `domain_fallback_palette_indices` | Positions in `skill_palette` used for domains `domain_colors` doesn't name. |
 | `default_accent` | Accent for an achievement emblem rendered without a crest. |
-| `achievement_crests` | Achievement emblem gradients, each `[light, mid, deep]`, rotating by achievement order. |
-| `certificate_crests` | Certificate seal-disc gradients, each `[light, mid, deep]`, rotating by certification order. |
+| `project_covers`, `achievement_crests`, `certificate_crests` | Gradients for project covers and for achievement/certificate emblems, each `[light, mid, deep]`, rotating by the item's order. |
 | `article_accents` | Accents for the writing index — ordinal, kicker and arrow on each row — rotating by article order. Darker than `skill_palette`, since these are text on the page rather than white text on a chip. |
-| `strings` | Fixed display copy — section kickers, titles, intros and closing lines. See below. |
+| `skills_marquee_speed`, `domain_bounce_speed`, `dark_fade_ms` | Motion speeds for the skills marquee, the domain bounce, and the dark-section fade. |
+| `home_skills_limit`, `certificates_preview_count`, `carousel_focus_dots` | How many skill chips a home-page card shows (`-1` for all), how many certificates preview on the home page, and how many carousel dots stay at full opacity. |
+| `hero_portrait_opacity` | Opacity of the hero portrait. |
+| `strings` | Fixed display copy — kickers, titles, intros, labels and closing lines. See below. |
 
-Values in the colour fields are CSS colours; plain 6-digit hex is the
-convention, and 8-digit hex (`#rrggbbaa`) works where a baked-in alpha is
-wanted. Translucent shadows and glass fills are derived from `tokens` in the
-front-end, so they follow along without needing their own entries.
+Colour values are CSS colours; plain 6-digit hex is the convention, and 8-digit
+hex (`#rrggbbaa`) works where a baked-in alpha is wanted. Translucent shadows and
+glass fills are derived from `tokens`, so they follow along without needing their
+own entries. Nothing here controls layout, spacing, blur radii or shadow
+geometry.
 
-Omitting a token is not an error: anything the document leaves out keeps the
-front-end's white placeholder, which is also what shows while the request is in
-flight.
+Omitting a key is not an error: anything the document leaves out keeps the site's
+placeholder, which is also what shows while the request is in flight.
 
 ### Strings
 
 `strings` carries the wording that belongs to the *design* rather than to the
-portfolio's content: the numbered kickers (`02 — Experience`), the section and
-page titles, the paragraph under a title, and the one-line thought that closes a
-section. It is grouped by the section or route that renders it —
-`experience`, `projects`, `certificates`, `achievements`, `trophy_wall`,
-`beyond_work`, `articles`, `footer`, `status` — and every group draws from the
-same key vocabulary rather than naming its lines itself:
+portfolio's content: numbered kickers (`02 — Experience`), section and page
+titles, the paragraph under a title, button and filter labels, and the messages
+shown when there is nothing to print. It is grouped by the section or route that
+renders it — `common`, `hero`, `experience`, `projects`, `certificates`,
+`achievements`, `trophy_wall`, `beyond_work`, `articles`, `footer`, `chat`,
+`status` — and the groups draw from a shared key vocabulary:
 
 | Key | Where it shows |
 |---|---|
@@ -157,33 +204,36 @@ same key vocabulary rather than naming its lines itself:
 | `detail_intro` | The paragraph directly under that heading. |
 | `detail_outro` | The closing line at the foot of that route. |
 | `empty_body` | Shown when there is nothing to render — a filter matching no rows, or content that failed to load. |
+| `*_label` | Buttons, links, filters and accessible names. |
 
-A group carries only the keys it renders. `experience` and `projects` are a
-heading over a list on the home page, so alongside `kicker`/`title` they carry
-`detail_outro` — the detail route takes its own heading from the job or project,
-and needs no framing paragraph. `trophy_wall` and `beyond_work` are routes of
-their own, so `title` belongs to the home page CTA and the `detail_*` set to the
-page, with `kicker` printed on both. `certificates`
-adds `empty_body` for the filtered archive. `articles` is a route of its own:
-`kicker`/`title` head the writing index and `detail_intro` is the paragraph
-under them, plus three keys for the states with nothing to print —
-`empty_body` when the content document carries no `articles` key (or a
-`/article/<id>` URL names one the index does not have),
-`search_empty_body` when the index search matches nothing, and
-`content_empty_body` when an article's `content` URL does not answer.
-`footer` and `status` follow the
-same shape: `footer.kicker` is the message form's label and `footer.title` the
-closing headline; `status.kicker` is the line under the loading mark and
-`status.empty_body` the message when the content fails to arrive.
+A group carries only the keys it renders. `common` is the shared set every
+section can fall back on — `back_label`, `filter_label`, `previous_label` and
+friends, plus `no_data`, the placeholder rendered for any string the site asks
+for that this document does not carry. `experience` and `projects` are a heading
+over a list on the home page, so alongside `kicker`/`title` they carry
+`detail_outro` — the detail route takes its own heading from the job or project.
+`trophy_wall` and `beyond_work` are routes of their own, so `title` belongs to
+the home page CTA and the `detail_*` set to the page, with `kicker` printed on
+both. `certificates` adds the filter labels and `empty_title`/`empty_body` for
+the filtered archive. `articles` heads the writing index with `kicker`/`title`
+and `detail_intro`, plus search, sort and count labels and four keys for the
+states with nothing to print — `empty_body` when the content document carries no
+`articles` key, `not_found_body` when a `/article/<id>` URL names one the index
+does not have, `search_empty_body` when the search matches nothing, and
+`content_empty_body` when an article's `content` URL does not answer. `footer`
+covers the message form — its label, placeholders, send button and the empty and
+sent messages. `chat` covers the assistant widget: placeholder, online/offline
+status and the body shown while it is asleep. `status` is the loading and error
+frame: the line under the loading mark, the message when content fails to
+arrive, and the retry affordance.
 
 The one exception is `trophy_wall.stat_badges` / `trophy_wall.stat_platforms`,
 the labels under that page's two counters — they name specific counters, so
 there is no shared key for them.
 
-Anything not here stays in the front-end on purpose: button and link labels,
-form fields, accessible names, and the placeholder text that stands in for a
-blank content field. Names, blurbs, roles and write-ups all come from the
-content document instead.
+Anything not here stays in the code on purpose: form field names and the
+placeholder text that stands in for a blank content field. Names, blurbs, roles
+and write-ups all come from the content document instead.
 
-Omitting a string is not an error either — the front-end ships the same default
-wording and falls back to it per key, so a partial `strings` block is fine.
+Omitting a string is not an error either — the same default wording ships in the
+code and is used per key, so a partial `strings` block is fine.
