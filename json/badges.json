@@ -43,5 +43,14 @@
         "domain": "be_development",
         "skills": ["pgsql"],
         "description": "Earned HackerRank SQL badge covering querying, joins and aggregation fundamentals."
+    },
+    {
+        "name": "50 Days Streak",
+        "display_picture": "/assets/images/badges/matiks_50_days_streak.png",
+        "platform": "Matiks",
+        "link": "",
+        "domain": "",
+        "skills": ["math"],
+        "description": "Earned Matiks 50 Days Streak badge for solving mental math challenges 50 days in a row."
     }
 ]

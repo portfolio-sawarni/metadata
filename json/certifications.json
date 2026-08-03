@@ -23,7 +23,8 @@
         "short_description": "Completed Calculus for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering derivatives, gradients, and optimization techniques essential for understanding and building machine learning algorithms.",
         "domain": "ai_engineering",
         "skills": [
-            "ml"
+            "ml",
+            "math"
         ]
     },
     {
@@ -35,7 +36,8 @@
         "short_description": "Completed Linear Algebra for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering vectors, matrices, eigenvalues, and their applications in machine learning algorithms and data transformations.",
         "domain": "ai_engineering",
         "skills": [
-            "ml"
+            "ml",
+            "math"
         ]
     },
     {

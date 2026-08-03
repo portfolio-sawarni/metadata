@@ -32,5 +32,6 @@
     {"unique_id": "blockchain", "name": "Blockchain", "type": "mainstream", "displayable": false},
     {"unique_id": "xss", "name": "XSS", "type": "mainstream", "displayable": false},
     {"unique_id": "sqli", "name": "SQL Injection", "type": "mainstream", "displayable": false},
-    {"unique_id": "linux", "name": "Linux", "type": "mainstream", "displayable": false}
+    {"unique_id": "linux", "name": "Linux", "type": "mainstream", "displayable": false},
+    {"unique_id": "math", "name": "Mathematics", "type": "mainstream", "displayable": false}
 ]
