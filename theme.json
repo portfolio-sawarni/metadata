@@ -111,7 +111,9 @@
       "close_label": "Close",
       "gallery_label": "Gallery",
       "previous_label": "Previous",
-      "next_label": "Next"
+      "next_label": "Next",
+      "domains_label": "Domains",
+      "skills_label": "Skills"
     },
     "hero": {
       "resume_label": "Download résumé"
