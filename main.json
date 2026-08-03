@@ -227,6 +227,54 @@
             "name": "Linux",
             "type": "mainstream",
             "displayable": false
+        },
+        {
+            "unique_id": "math",
+            "name": "Mathematics",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "burp_suite",
+            "name": "Burp Suite",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "pentesting",
+            "name": "Penetration Testing",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "password_cracking",
+            "name": "Password Cracking",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "privilege_escalation",
+            "name": "Privilege Escalation",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "metasploit",
+            "name": "Metasploit",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "networking",
+            "name": "Computer Networking",
+            "type": "mainstream",
+            "displayable": false
+        },
+        {
+            "unique_id": "ctf",
+            "name": "Capture The Flag",
+            "type": "mainstream",
+            "displayable": false
         }
     ],
     "domains": [
@@ -371,7 +419,8 @@
             "short_description": "Completed Calculus for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering derivatives, gradients, and optimization techniques essential for understanding and building machine learning algorithms.",
             "domain": "ai_engineering",
             "skills": [
-                "ml"
+                "ml",
+                "math"
             ]
         },
         {
@@ -383,7 +432,8 @@
             "short_description": "Completed Linear Algebra for Machine Learning and Data Science by DeepLearning.AI on Coursera — covering vectors, matrices, eigenvalues, and their applications in machine learning algorithms and data transformations.",
             "domain": "ai_engineering",
             "skills": [
-                "ml"
+                "ml",
+                "math"
             ]
         },
         {
@@ -565,6 +615,100 @@
                 "pgsql"
             ],
             "description": "Earned HackerRank SQL badge covering querying, joins and aggregation fundamentals."
+        },
+        {
+            "name": "Burp'ed",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_burped.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "burp_suite",
+                "pentesting",
+                "xss"
+            ],
+            "description": "Earned TryHackMe Burp'ed badge for completing the Burp Suite web application testing rooms."
+        },
+        {
+            "name": "cat linux.txt",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_cat_linux_txt.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "linux"
+            ],
+            "description": "Earned TryHackMe cat linux.txt badge for completing the Linux fundamentals rooms."
+        },
+        {
+            "name": "Hash Cracker",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_hash_cracker.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "password_cracking"
+            ],
+            "description": "Earned TryHackMe Hash Cracker badge for cracking password hashes and completing the crypto rooms."
+        },
+        {
+            "name": "Linux PrivEsc",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_linux_privEsc.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "linux",
+                "privilege_escalation"
+            ],
+            "description": "Earned TryHackMe Linux PrivEsc badge for completing the Linux privilege escalation room."
+        },
+        {
+            "name": "Metasploitable",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_metasploitable.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "metasploit",
+                "pentesting"
+            ],
+            "description": "Earned TryHackMe Metasploitable badge for completing the Metasploit exploitation rooms."
+        },
+        {
+            "name": "Mr Robot",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_mr_robot.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "ctf",
+                "linux",
+                "privilege_escalation"
+            ],
+            "description": "Earned TryHackMe Mr Robot badge for rooting the Mr Robot CTF machine."
+        },
+        {
+            "name": "Networking Nerd",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/thm_networking_nerd.png",
+            "platform": "TryHackMe",
+            "link": "https://tryhackme.com/p/sawarni99",
+            "domain": "cyber_security",
+            "skills": [
+                "networking"
+            ],
+            "description": "Earned TryHackMe Networking Nerd badge for completing the networking fundamentals rooms."
+        },
+        {
+            "name": "50 Days Streak",
+            "display_picture": "https://raw.githubusercontent.com/portfolio-sawarni/metadata/refs/heads/main/assets/images/badges/matiks_50_days_streak.png",
+            "platform": "Matiks",
+            "link": "",
+            "domain": "",
+            "skills": [
+                "math"
+            ],
+            "description": "Earned Matiks 50 Days Streak badge for solving mental math challenges 50 days in a row."
         }
     ],
     "hobbies": [

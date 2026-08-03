@@ -45,6 +45,69 @@
         "description": "Earned HackerRank SQL badge covering querying, joins and aggregation fundamentals."
     },
     {
+        "name": "Burp'ed",
+        "display_picture": "/assets/images/badges/thm_burped.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["burp_suite", "pentesting", "xss"],
+        "description": "Earned TryHackMe Burp'ed badge for completing the Burp Suite web application testing rooms."
+    },
+    {
+        "name": "cat linux.txt",
+        "display_picture": "/assets/images/badges/thm_cat_linux_txt.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["linux"],
+        "description": "Earned TryHackMe cat linux.txt badge for completing the Linux fundamentals rooms."
+    },
+    {
+        "name": "Hash Cracker",
+        "display_picture": "/assets/images/badges/thm_hash_cracker.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["password_cracking"],
+        "description": "Earned TryHackMe Hash Cracker badge for cracking password hashes and completing the crypto rooms."
+    },
+    {
+        "name": "Linux PrivEsc",
+        "display_picture": "/assets/images/badges/thm_linux_privEsc.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["linux", "privilege_escalation"],
+        "description": "Earned TryHackMe Linux PrivEsc badge for completing the Linux privilege escalation room."
+    },
+    {
+        "name": "Metasploitable",
+        "display_picture": "/assets/images/badges/thm_metasploitable.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["metasploit", "pentesting"],
+        "description": "Earned TryHackMe Metasploitable badge for completing the Metasploit exploitation rooms."
+    },
+    {
+        "name": "Mr Robot",
+        "display_picture": "/assets/images/badges/thm_mr_robot.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["ctf", "linux", "privilege_escalation"],
+        "description": "Earned TryHackMe Mr Robot badge for rooting the Mr Robot CTF machine."
+    },
+    {
+        "name": "Networking Nerd",
+        "display_picture": "/assets/images/badges/thm_networking_nerd.png",
+        "platform": "TryHackMe",
+        "link": "https://tryhackme.com/p/sawarni99",
+        "domain": "cyber_security",
+        "skills": ["networking"],
+        "description": "Earned TryHackMe Networking Nerd badge for completing the networking fundamentals rooms."
+    },
+    {
         "name": "50 Days Streak",
         "display_picture": "/assets/images/badges/matiks_50_days_streak.png",
         "platform": "Matiks",
