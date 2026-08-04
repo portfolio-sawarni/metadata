@@ -1,0 +1,486 @@
+================================================================================
+PORTFOLIO.JSON - FORMAT REFERENCE
+================================================================================
+
+portfolio.json is the content entry point. It carries the two blocks written
+inline - about and contact - and names the file that holds each remaining
+section. validate_and_combine_json.py inlines those files, expands asset paths
+into raw GitHub URLs, and writes the result to main.json, which is what the
+front-end fetches.
+
+The schema below describes the document after that inlining, so a section shown
+here as an array of records is written in portfolio.json as the string
+"skills.json" and appears as the array in main.json. The "file" key on each
+section names the file it is read from.
+
+Types
+-----
+
+  string      One line of plain text. Rendered as written; no markup is parsed.
+  url         An asset path relative to the repository root
+              ("/assets/images/dp/sawarni_5.png"), or an absolute http(s) URL.
+              Relative paths are expanded by the combine script; absolute ones
+              are left alone. An empty value is not an error - it drops the
+              image, link or CTA rather than rendering a broken one.
+  markdown    Long-form copy. Written on one line with the literal separator
+              <new_line> between blocks, and run through the site's Markdown
+              parser: headings, paragraphs, lists, blockquotes, fenced code,
+              thematic breaks, bold, italic, strike, inline code, links and
+              images. No word or character limit - these fields have a page of
+              their own to fill.
+  boolean     true or false.
+  integer     A whole number.
+  array       An ordered list; "items" describes one entry.
+  ref         A string that must match a unique_id declared in another file.
+              "ref_file" names it. The validator rejects an id it cannot find.
+
+max_word and max_length are budgets, not validations - nothing in the pipeline
+enforces them. They are the length the layout was designed around: a value past
+them wraps a card, pushes a chip row onto a new line, or overruns a heading.
+Under them is always safe.
+
+Omitting a key is not an error. A blank text field renders as the theme's
+strings.common.no_data, and a section the document does not carry at all is not
+rendered.
+
+
+================================================================================
+SCHEMA
+================================================================================
+
+{
+  "version": {"type": "integer"},
+  "name": {"type": "string", "max_word": 3, "max_length": 30},
+
+  "about": {
+    "name": {"type": "string", "max_word": 2, "max_length": 20},
+    "bot_name": {"type": "string", "max_word": 1, "max_length": 10},
+    "display_picture": {"type": "url"},
+    "description": {"type": "string", "max_word": 30, "max_length": 160},
+    "short_description": {"type": "string", "max_word": 10, "max_length": 50},
+    "resume": {"type": "url"},
+    "email": {"type": "string", "max_word": 1, "max_length": 60}
+  },
+
+  "contact": {
+    "mobile_number": {"type": "string", "max_word": 1, "max_length": 20},
+    "email": {"type": "string", "max_word": 1, "max_length": 60}
+  },
+
+  "social_media": {
+    "type": "array",
+    "file": "social_media.json",
+    "items": {
+      "name": {"type": "string", "max_word": 2, "max_length": 20},
+      "link": {"type": "url"},
+      "logo": {"type": "url"}
+    }
+  },
+
+  "skills": {
+    "type": "array",
+    "file": "skills.json",
+    "items": {
+      "unique_id": {"type": "string", "max_word": 1, "max_length": 30},
+      "name": {"type": "string", "max_word": 4, "max_length": 30},
+      "type": {"type": "string", "max_word": 1, "max_length": 20},
+      "displayable": {"type": "boolean"}
+    }
+  },
+
+  "domains": {
+    "type": "array",
+    "file": "domains.json",
+    "items": {
+      "unique_id": {"type": "string", "max_word": 1, "max_length": 30},
+      "name": {"type": "string", "max_word": 3, "max_length": 25},
+      "displayable": {"type": "boolean"}
+    }
+  },
+
+  "projects": {
+    "type": "array",
+    "file": "projects.json",
+    "items": {
+      "title": {"type": "string", "max_word": 4, "max_length": 30},
+      "pictures": {"type": "array", "items": {"type": "url"}},
+      "demo": {"type": "url"},
+      "link": {"type": "url"},
+      "description": {"type": "markdown"},
+      "short_description": {"type": "string", "max_word": 50, "max_length": 340},
+      "skills": {"type": "array", "items": {"type": "ref", "ref_file": "skills.json"}},
+      "domains": {"type": "array", "items": {"type": "ref", "ref_file": "domains.json"}}
+    }
+  },
+
+  "experience": {
+    "type": "array",
+    "file": "experience.json",
+    "items": {
+      "companyId": {"type": "string", "max_word": 1, "max_length": 40},
+      "companyName": {"type": "string", "max_word": 4, "max_length": 30},
+      "role": {"type": "string", "max_word": 5, "max_length": 40},
+      "startYear": {"type": "string", "max_word": 1, "max_length": 4},
+      "endYear": {"type": "string", "max_word": 1, "max_length": 7},
+      "short_description": {"type": "string", "max_word": 60, "max_length": 430},
+      "description": {"type": "markdown"},
+      "skills": {"type": "array", "items": {"type": "ref", "ref_file": "skills.json"}}
+    }
+  },
+
+  "achievements": {
+    "type": "array",
+    "file": "achievements.json",
+    "items": {
+      "title": {"type": "string", "max_word": 8, "max_length": 60},
+      "description": {"type": "string", "max_word": 60, "max_length": 400},
+      "short_description": {"type": "string", "max_word": 32, "max_length": 230},
+      "pictures": {"type": "array", "items": {"type": "url"}},
+      "links": {
+        "type": "array",
+        "items": {
+          "label": {"type": "string", "max_word": 3, "max_length": 25},
+          "link": {"type": "url"}
+        }
+      }
+    }
+  },
+
+  "certifications": {
+    "type": "array",
+    "file": "certifications.json",
+    "items": {
+      "title": {"type": "string", "max_word": 10, "max_length": 70},
+      "issuer": {"type": "string", "max_word": 6, "max_length": 40},
+      "picture": {"type": "url"},
+      "link": {"type": "url"},
+      "description": {"type": "string", "max_word": 65, "max_length": 500},
+      "short_description": {"type": "string", "max_word": 32, "max_length": 250},
+      "domain": {"type": "ref", "ref_file": "domains.json"},
+      "skills": {"type": "array", "items": {"type": "ref", "ref_file": "skills.json"}}
+    }
+  },
+
+  "badges": {
+    "type": "array",
+    "file": "badges.json",
+    "items": {
+      "name": {"type": "string", "max_word": 4, "max_length": 25},
+      "display_picture": {"type": "url"},
+      "platform": {"type": "string", "max_word": 2, "max_length": 20},
+      "link": {"type": "url"},
+      "domain": {"type": "ref", "ref_file": "domains.json"},
+      "skills": {"type": "array", "items": {"type": "ref", "ref_file": "skills.json"}},
+      "description": {"type": "string", "max_word": 20, "max_length": 120}
+    }
+  },
+
+  "hobbies": {
+    "type": "array",
+    "file": "hobbies.json",
+    "items": {
+      "name": {"type": "string", "max_word": 2, "max_length": 20},
+      "description": {"type": "markdown"},
+      "pictures": {"type": "array", "items": {"type": "url"}},
+      "achievements": {
+        "type": "array",
+        "items": {"type": "string", "max_word": 20, "max_length": 120}
+      },
+      "display_picture": {"type": "url"}
+    }
+  },
+
+  "articles": {
+    "type": "array",
+    "file": "articles.json",
+    "items": {
+      "id": {"type": "string", "max_word": 1, "max_length": 40},
+      "title": {"type": "string", "max_word": 10, "max_length": 70},
+      "kicker": {"type": "string", "max_word": 4, "max_length": 30},
+      "date": {"type": "string", "max_word": 1, "max_length": 10},
+      "summary": {"type": "string", "max_word": 35, "max_length": 200},
+      "content": {"type": "url"}
+    }
+  }
+}
+
+
+================================================================================
+FIELD NOTES
+================================================================================
+
+--- Top level ------------------------------------------------------------------
+
+version
+    Schema version of this document. Bump it if the shape of the file changes,
+    so a front-end can tell which contract it is reading.
+
+name
+    Human label for the content set. Not rendered; it exists so several content
+    files can be told apart.
+
+--- about ----------------------------------------------------------------------
+
+Written inline in portfolio.json rather than living in a file of its own.
+
+name
+    The hero headline, split on whitespace: the first word is the first name and
+    the rest the last name, each set on its own line. Two words is what the
+    composition is drawn for; a third wraps the headline.
+
+bot_name
+    The name the chat assistant goes by, in the panel header and in
+    strings.chat.sleeping_body. Blank falls back to the first name, so it only
+    needs filling when the assistant should not be called that.
+
+display_picture
+    The hero portrait. A PNG cut-out on a transparent background is what the
+    radial mask and drop shadow are tuned for; a rectangular photo shows its
+    corners fading rather than sitting in the disc.
+
+description
+    The paragraph under the hero headline. It is also the page's meta
+    description and the ProfilePage schema's description, so it is the sentence
+    search results print. Blank falls back to short_description.
+
+short_description
+    The compact form of the same line, used where the long one does not fit.
+    Blank falls back to description.
+
+resume
+    The résumé PDF behind the hero CTA. Blank hides the button rather than
+    linking nowhere - the label itself comes from strings.hero.
+
+email
+    Optional. Some payloads carry the address here instead of under contact; the
+    front-end prefers this one when both are present.
+
+--- contact --------------------------------------------------------------------
+
+Also written inline. mobile_number is optional and a blank one hides the row
+rather than padding it; email is what the footer's message form addresses.
+
+--- social_media ---------------------------------------------------------------
+
+The circular icon buttons in the hero. A record with no link is dropped - the
+button would lead nowhere. name is the tooltip label, so it wants the platform's
+name and nothing more. logo is the platform mark; blank falls back to the glyph
+the front-end draws for known platforms.
+
+--- skills ---------------------------------------------------------------------
+
+The shared vocabulary every other section references by unique_id, and the
+source of the chip colours.
+
+unique_id
+    Lower-case, underscore-separated, unique within the file. Referenced by
+    experience, projects, certifications and badges; the validator rejects an id
+    those files use that is not declared here.
+
+name
+    What the chip and the marquee print. The marquee sets it large, so a long
+    name is what makes a row scroll noticeably longer than its pair.
+
+type
+    Free-text grouping label. Not rendered.
+
+displayable
+    Whether the skill appears in skill-listing surfaces like the marquee.
+    Absent means displayable - only an explicit false hides one. A hidden skill
+    can still be referenced, and still renders as a chip on the item that names
+    it.
+
+Order matters: a skill takes its colour from its position in this file, via
+theme.json's skill_palette. Reordering recolours; renaming does not.
+
+--- domains --------------------------------------------------------------------
+
+The same idea, one level up: the fields of work a project, certificate or badge
+belongs to. Colours are pinned per domain in theme.json's domain_colors, keyed
+by unique_id, so a domain keeps its colour wherever it appears.
+
+name is printed in the hero's orbiting chips as well as in chip rows, and those
+chips are small - two or three words is the ceiling before one wraps.
+
+displayable behaves as it does for skills: absent means shown, and only an
+explicit false keeps a domain out of the hero orbit.
+
+--- projects -------------------------------------------------------------------
+
+title
+    The card heading on the home rail and the detail route's heading. It is also
+    what the route id is derived from when the record carries no explicit id.
+
+pictures
+    The detail route's carousel, in order. The first entry is also the card's
+    cover on the home rail; with no pictures the card falls back to a gradient
+    from theme.json's project_covers.
+
+demo, link
+    The two CTAs on the detail route - a live demo and the repository. Either
+    may be blank, which drops that button.
+
+description
+    The detail route's body. Markdown, so headings, lists and code fences are
+    all available; this is the field with room to explain the work.
+
+short_description
+    The paragraph on the home rail's card, and the meta description for the
+    detail route. Blank falls back to description, which is a page of Markdown
+    printed into a card - so this one is worth writing.
+
+skills, domains
+    Lists of unique_ids. Duplicates within one list collapse into one chip, and
+    an id neither file declares fails validation.
+
+--- experience -----------------------------------------------------------------
+
+Sorted newest first by startYear, so the declared order in the file does not
+matter.
+
+companyId
+    Optional. The /experience/<id> route segment. Absent, it is derived from
+    companyName, so it is only worth setting to pin a URL.
+
+companyName, role
+    The timeline entry's heading and the line under it.
+
+startYear
+    Four digits, YYYY. Enforced.
+
+endYear
+    YYYY or the literal "Present". A concrete year may not be earlier than
+    startYear. Enforced.
+
+short_description
+    The paragraph on the home page's timeline entry. Unlike the other sections
+    this one does not fall back to description - a blank here renders as
+    no_data rather than printing the full Markdown body into the timeline.
+
+description
+    The detail route's body. Markdown. Blank falls back to short_description.
+
+skills
+    Lists of unique_ids from skills.json.
+
+--- achievements ---------------------------------------------------------------
+
+title
+    The row heading.
+
+description
+    The body of the row on desktop. Plain text, not Markdown - it is printed
+    into a fixed card, so the limits above are the ones that matter.
+
+short_description
+    What the same row prints at phone widths. Blank falls back to description,
+    which is the case worth avoiding: the long form on a narrow card is what
+    pushes the row out of its layout.
+
+pictures, links
+    Optional. Supporting media and outbound links for the achievement. The
+    current content set uses neither.
+
+--- certifications -------------------------------------------------------------
+
+title, issuer
+    The card heading and the line under it. The emblem shows the first letters
+    of the title, up to two, upper-cased, so a title whose first two words carry
+    the meaning reads better as a mark.
+
+picture
+    The certificate image, shown in the archive's viewer and the modal.
+
+link
+    The verification URL. These are often long and query-heavy; there is no
+    limit on a url, only on what it replaces if it is blank.
+
+description
+    The body in the archive's detail panel and in the modal. Plain text.
+
+short_description
+    The body on the home page's preview card. Blank falls back to description.
+
+domain
+    A single unique_id from domains.json - note the singular field name and the
+    single string, unlike projects, which uses a list.
+
+skills
+    A list of unique_ids from skills.json.
+
+--- badges ---------------------------------------------------------------------
+
+The Trophy Wall. name and platform together form the badge's id, and platform
+also drives the page's filter chips and each badge's accent colour, so it wants
+the platform's canonical spelling - "Hackerrank", not "HR" or "hackerrank.com".
+
+display_picture is the disc artwork; blank falls back to a hatched well with the
+badge's initials. description is the one-line blurb in the badge modal, and
+domain is a single unique_id, as in certifications.
+
+--- hobbies --------------------------------------------------------------------
+
+The dark Beyond Work route.
+
+name
+    The card heading. These are single words in the current set and the card is
+    drawn for that.
+
+description
+    The card body. Markdown, rendered on the dark surface.
+
+pictures
+    The card's gallery carousel. Empty leaves the card text-only, which is a
+    supported state rather than a gap.
+
+achievements
+    The highlight rows under the description - one line each, printed as plain
+    text. A full sentence, not a paragraph.
+
+display_picture
+    The disc mark on the card. An SVG glyph is what the current set uses.
+
+--- articles -------------------------------------------------------------------
+
+Optional. The whole section may be absent, and is today: the writing index then
+renders its themed empty state, and the combine script skips the article
+validations.
+
+id
+    Unique within the file, and the /article/<id> route segment. Enforced.
+
+title, kicker
+    The index row's heading and the mono line above it.
+
+date
+    DD/MM/YYYY, and a real calendar date. Enforced. Printed as "18 March 2026"
+    and used as the index's sort key; anything the front-end cannot parse is
+    printed as given and sorted last.
+
+summary
+    The standfirst under the title on the index, and the meta description for
+    the article route. Blank drops the line rather than padding it.
+
+content
+    The Markdown body, as a path into articles/. Fetched when the route opens;
+    a URL that does not answer renders strings.articles.content_empty_body.
+    The body itself is an ordinary .md file, so it has no limits.
+
+
+================================================================================
+NOTES
+================================================================================
+
+- Renaming a key breaks the front-end; changing its value does not. A key the
+  front-end does not know about is ignored.
+- A partial file is valid. Anything omitted renders as
+  strings.common.no_data, or - for images, links and CTAs - drops the element
+  rather than showing a broken one.
+- Order is meaningful in three places: skills.json decides chip colours,
+  projects.json and certifications.json decide which gradient each card lands
+  on, and articles.json decides the accent on each index row. Reordering any of
+  them recolours; see theme-format.txt.
+- Asset paths are not validated. A path naming a missing file passes the script
+  and surfaces as a broken image on the page.
+- Every edit here needs validate_and_combine_json.py run before publishing -
+  main.json is what is served, and it is generated, not hand-edited.
