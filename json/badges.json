@@ -108,12 +108,12 @@
         "description": "Earned TryHackMe Networking Nerd badge for completing the networking fundamentals rooms."
     },
     {
-        "name": "50 Days Streak",
-        "display_picture": "/assets/images/badges/matiks_50_days_streak.png",
+        "name": "100 Days Streak",
+        "display_picture": "/assets/images/badges/matiks_100_days_streak.png",
         "platform": "Matiks",
         "link": "",
         "domain": "",
         "skills": ["math"],
-        "description": "Earned Matiks 50 Days Streak badge for solving mental math challenges 50 days in a row."
+        "description": "Earned Matiks 100 Days Streak badge for solving mental math challenges 100 days in a row."
     }
 ]
